@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Leadership Mirror — Meridian Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0c0b;--s1:#161513;--s2:#1e1d1a;--b1:#252220;--b2:#302d28;
+  --t1:#ede8df;--t2:#8a8580;--t3:#4a4742;--t4:#2e2c28;
+  --gold:#c49838;--gold-l:#ddb84e;--gold-d:rgba(196,152,56,0.1);
+  --red:#9e3a3a;--red-l:#c45050;--red-d:rgba(158,58,58,0.1);
+  --grn:#3a7d58;--grn-l:#4da070;--grn-d:rgba(58,125,88,0.1);
+  --ff-s:'Playfair Display',Georgia,serif;
+  --ff-b:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--t1);font-family:var(--ff-b);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+#app{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px}
+.screen{width:100%;max-width:680px}
+.screen.enter{animation:up 0.45s var(--ease) both}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade{animation:fade 0.4s var(--ease) both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.eyebrow{display:block;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1{font-family:var(--ff-s);font-size:clamp(2.1rem,5vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-0.01em;margin-bottom:20px}
+h2{font-family:var(--ff-s);font-size:clamp(1.45rem,3vw,1.9rem);font-weight:600;line-height:1.15;margin-bottom:14px}
+h3{font-family:var(--ff-s);font-size:1.15rem;font-weight:600;line-height:1.25;margin-bottom:10px}
+p{color:var(--t2);margin-bottom:14px;font-size:15px}
+p:last-child{margin-bottom:0}
+p.lead{font-size:16px;color:var(--t1);line-height:1.72}
+hr{border:none;border-top:1px solid var(--b1);margin:28px 0}
+em{font-style:italic;color:var(--t1)}
+.muted-note{font-size:12px;color:var(--t4)}
+.spacer{height:20px}
+
+.bar-wrap{margin-bottom:34px}
+.bar-meta{display:flex;justify-content:space-between;margin-bottom:8px}
+.bar-meta span{font-size:10px;letter-spacing:0.09em;text-transform:uppercase;color:var(--t3)}
+.bar{height:2px;background:var(--b1)}
+.bar-fill{height:100%;background:var(--gold);transition:width 0.5s var(--ease)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 30px;border:1px solid var(--gold);background:transparent;color:var(--gold-l);font-family:var(--ff-b);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,color 0.2s}
+.btn:hover{background:var(--gold-d)}
+.btn:focus-visible{outline:2px solid var(--gold-l);outline-offset:2px}
+.btn.primary{background:var(--gold);color:#0d0c0b}
+.btn.primary:hover{background:var(--gold-l)}
+.btn.muted{border-color:var(--b2);color:var(--t3)}
+.btn.muted:hover{background:var(--s2);color:var(--t2)}
+.btn[disabled]{opacity:0.38;cursor:not-allowed;pointer-events:none}
+.btn-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.textlink{background:none;border:none;color:var(--t3);font-family:var(--ff-b);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px}
+.textlink:hover{color:var(--gold-l)}
+
+.title-bar{width:36px;height:2px;background:var(--gold);margin-bottom:28px}
+.dom-icon{display:inline-flex;color:var(--gold);vertical-align:middle}
+.dom-icon svg{width:20px;height:20px}
+.head-icon{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.head-icon .dom-icon svg{width:26px;height:26px}
+
+.stmt-card{background:var(--s1);border:1px solid var(--b1);padding:44px 40px;margin-bottom:24px;position:relative}
+.stmt-num{position:absolute;top:18px;right:22px;font-size:10px;letter-spacing:0.1em;color:var(--t4)}
+.stmt-card .dom-icon{position:absolute;top:16px;left:20px}
+.stmt-text{font-family:var(--ff-s);font-size:1.15rem;font-weight:400;line-height:1.58;color:var(--t1);font-style:italic;margin-top:14px}
+
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:28px}
+.sc-btn{padding:10px 4px;border:1px solid var(--b1);background:transparent;color:var(--t2);font-family:var(--ff-b);font-size:10px;text-align:center;cursor:pointer;transition:all 0.15s;line-height:1.35}
+.sc-btn:hover{border-color:var(--b2);color:var(--t1);background:var(--s2)}
+.sc-btn.on{border-color:var(--gold);background:var(--gold-d);color:var(--gold-l)}
+.sc-btn:focus-visible{outline:2px solid var(--gold-l);outline-offset:1px}
+.sc-btn .kbd{display:block;font-size:8px;color:var(--t4);margin-top:3px}
+.scale-legend{display:flex;justify-content:space-between;margin-top:6px}
+.scale-legend span{font-size:9px;letter-spacing:0.06em;color:var(--t4);text-transform:uppercase}
+
+.svg-wrap{background:var(--s1);border:1px solid var(--b1);padding:28px;margin-bottom:24px;display:flex;flex-direction:column;align-items:center}
+.svg-wrap svg{max-width:100%;height:auto}
+.svg-cap{font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:var(--t3);margin-top:14px;text-align:center}
+.f-none{fill:none}.f-bg{fill:var(--s1)}.f-gold{fill:var(--gold)}.f-goldl{fill:var(--gold-l)}
+.f-red{fill:var(--red-l)}.f-grn{fill:var(--grn-l)}.f-t1{fill:var(--t1)}.f-t2{fill:var(--t2)}.f-t3{fill:var(--t3)}.f-b2{fill:var(--b2)}
+.s-gold{stroke:var(--gold)}.s-goldl{stroke:var(--gold-l)}.s-red{stroke:var(--red-l)}.s-grn{stroke:var(--grn-l)}
+.s-track{stroke:var(--b2)}.s-b1{stroke:var(--b1)}.s-t3{stroke:var(--t3)}
+.svg-lbl{font-family:var(--ff-b);font-size:9px;letter-spacing:0.06em;text-transform:uppercase}
+.svg-num{font-family:var(--ff-s);font-weight:700}
+
+.score-hero{background:var(--s1);border:1px solid var(--b1);text-align:center;padding:40px 40px 36px;margin-bottom:28px}
+.score-hero .lbl{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);margin-top:8px}
+.score-hero .sub{font-size:14px;color:var(--t2);margin-top:12px;max-width:440px;margin-left:auto;margin-right:auto}
+
+.commit-flag{background:var(--s1);border:1px solid var(--b1);border-left:2px solid var(--gold);padding:16px 20px;margin-bottom:22px}
+.commit-flag .cf-h{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.commit-flag p{font-size:13px;margin:0}
+
+/* Shared judgement + explanation component (reveal chain-row + final dec-row) */
+.jrow{background:var(--s1);border:1px solid var(--b1);border-left:3px solid var(--b1);padding:18px 20px;margin-bottom:10px}
+.jrow.bad{border-left-color:var(--red-l)}
+.jrow.ok{border-left-color:var(--grn)}
+.jrow.warn{border-left-color:var(--gold)}
+.jrow-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.jrow-head .dom-icon svg{width:18px;height:18px}
+.jrow-title{font-size:13px;font-weight:500;color:var(--t1)}
+.jrow-note{font-size:13px;color:var(--t2);line-height:1.55}
+.jrow-note.dim{color:var(--t4)}
+
+.tag{display:inline-block;font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border:1px solid;margin-bottom:6px}
+.tag-red{border-color:var(--red);color:var(--red-l);background:var(--red-d)}
+.tag-grn{border-color:var(--grn);color:var(--grn-l);background:var(--grn-d)}
+.tag-gold{border-color:var(--gold);color:var(--gold-l);background:var(--gold-d)}
+
+.brief-block{background:var(--s1);border:1px solid var(--b1);border-left:2px solid var(--gold);padding:22px 24px;margin-bottom:20px}
+.brief-block .bb-head{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.brief-block p{font-size:14px;margin:0}
+
+.scene-card{background:var(--s1);border:1px solid var(--b1);padding:32px;margin-bottom:22px}
+.scene-card .sc-setup{font-size:15px;color:var(--t1);line-height:1.72;margin-bottom:16px}
+.scene-card .sc-q{font-size:12px;font-style:italic;color:var(--t3)}
+
+.p-btn{display:block;width:100%;padding:18px 20px;border:1px solid var(--b1);background:var(--s1);text-align:left;cursor:pointer;margin-bottom:10px;transition:all 0.15s}
+.p-btn:hover{border-color:var(--b2);background:var(--s2)}
+.p-btn.on{border-color:var(--gold);background:var(--gold-d)}
+.p-btn:focus-visible{outline:2px solid var(--gold-l);outline-offset:1px}
+.p-btn .pl{font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:5px}
+.p-btn .pt{font-size:14px;color:var(--t1);line-height:1.55;font-family:var(--ff-b)}
+
+.steps{display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.step-dot{width:6px;height:6px;border-radius:50%;background:var(--b2)}
+.step-dot.cur{background:var(--gold)}
+.step-dot.done{background:var(--t4)}
+.step-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);margin-left:4px}
+
+.princ-bar{display:flex;align-items:baseline;gap:10px;border:1px solid var(--b1);padding:12px 16px;margin-bottom:18px}
+.princ-bar .pb-label{font-size:9px;font-weight:500;letter-spacing:0.11em;text-transform:uppercase;color:var(--gold);flex-shrink:0}
+.princ-bar .pb-text{font-size:12px;color:var(--t2);font-style:italic;line-height:1.5}
+
+.esc-card{background:var(--s1);border:1px solid var(--b1);padding:28px 30px;margin-bottom:18px}
+.esc-sit{font-size:15px;color:var(--t1);line-height:1.72;padding-bottom:20px;border-bottom:1px solid var(--b1);margin-bottom:18px}
+.esc-q{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);margin-bottom:12px}
+
+.c-btn{display:block;width:100%;padding:14px 17px;border:1px solid var(--b1);background:transparent;color:var(--t1);text-align:left;font-family:var(--ff-b);font-size:13.5px;line-height:1.55;cursor:pointer;margin-bottom:8px;transition:all 0.15s}
+.c-btn:hover{border-color:var(--b2);background:var(--s2)}
+.c-btn.on{border-color:var(--gold);background:var(--gold-d)}
+.c-btn:focus-visible{outline:2px solid var(--gold-l);outline-offset:1px}
+.c-btn:last-child{margin-bottom:0}
+
+.reason-prompt{border:1px solid var(--gold);background:var(--gold-d);padding:16px 18px;margin-bottom:18px;animation:fade 0.3s var(--ease) both}
+.reason-prompt .rp-h{font-size:11px;color:var(--gold-l);margin-bottom:12px;font-style:italic}
+.reason-prompt .rp-btns{display:flex;gap:10px;flex-wrap:wrap}
+.rp-btn{flex:1;min-width:180px;padding:12px 14px;border:1px solid var(--b2);background:var(--s1);color:var(--t2);font-family:var(--ff-b);font-size:12px;cursor:pointer;text-align:left;transition:all 0.15s}
+.rp-btn:hover{border-color:var(--gold);color:var(--t1)}
+.rp-btn.on{border-color:var(--gold);color:var(--gold-l);background:var(--gold-d)}
+
+.final-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.sc-card{background:var(--s1);border:1px solid var(--b1);padding:28px 20px;text-align:center}
+.sc-card .scn{font-family:var(--ff-s);font-size:52px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px}
+.sc-card .sct{font-size:9px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.sc-card .scg{font-size:13px;color:var(--t2);line-height:1.5}
+
+.insight{background:var(--s1);border:1px solid var(--b1);padding:22px 24px;margin-bottom:12px}
+.insight .ih{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);margin-bottom:10px}
+.insight p{font-size:14px;margin:0}
+.insight .stated{font-style:italic;color:var(--t1);margin-bottom:8px}
+
+.replay-list{margin-bottom:12px}
+.replay-btn{display:flex;align-items:center;gap:12px;width:100%;padding:14px 18px;border:1px solid var(--b1);background:var(--s1);color:var(--t1);text-align:left;font-family:var(--ff-b);font-size:13px;cursor:pointer;margin-bottom:8px;transition:all 0.15s}
+.replay-btn:hover{border-color:var(--gold);background:var(--s2)}
+.replay-btn .rb-t{flex:1}
+.replay-btn .rb-s{font-size:11px;color:var(--t3)}
+
+.debrief-q{background:var(--s1);border:1px solid var(--b1);border-left:2px solid var(--gold);padding:18px 22px;margin-bottom:10px}
+.debrief-q .dq-n{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.debrief-q p{font-size:14px;color:var(--t1);margin:0;line-height:1.6}
+.construct{background:var(--s1);border:1px solid var(--b1);padding:20px 24px;margin-bottom:12px}
+.construct .cn-h{font-family:var(--ff-s);font-size:1.05rem;color:var(--t1);margin-bottom:6px}
+.construct p{font-size:13.5px;margin:0}
+
+.analyzing{text-align:center;padding:60px 0}
+.ld-dots{display:flex;gap:8px;justify-content:center;margin-top:24px}
+.ld-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:ldp 1.2s infinite ease-in-out}
+.ld-dot:nth-child(2){animation-delay:0.2s}
+.ld-dot:nth-child(3){animation-delay:0.4s}
+@keyframes ldp{0%,80%,100%{opacity:0.2;transform:scale(0.75)}40%{opacity:1;transform:scale(1)}}
+
+/* ============ TEACHER PROJECTION MODE ============ */
+.t-mode #app{padding:48px 40px}
+.t-mode .screen{max-width:1040px}
+.t-mode .eyebrow{font-size:13px;margin-bottom:20px}
+.t-mode h1{font-size:clamp(2.6rem,6vw,4rem)}
+.t-mode h2{font-size:clamp(2rem,4vw,2.8rem)}
+.t-mode p{font-size:20px}
+.t-mode .btn{font-size:14px;padding:16px 38px}
+.t-stmt-card{background:var(--s1);border:1px solid var(--b1);padding:56px 54px;margin-bottom:30px;position:relative}
+.t-stmt-card .dom-icon svg{width:38px;height:38px}
+.t-stmt-text{font-family:var(--ff-s);font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:400;line-height:1.4;color:var(--t1);font-style:italic;margin-top:20px}
+.t-stmt-num{position:absolute;top:26px;right:30px;font-size:14px;letter-spacing:0.1em;color:var(--t4)}
+.tally-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.counter{border:1px solid var(--b1);background:var(--s2);padding:20px 10px;text-align:center;cursor:pointer;transition:all 0.15s;user-select:none}
+.counter:hover{border-color:var(--gold)}
+.counter.on{border-color:var(--gold);background:var(--gold-d)}
+.counter .cn-lbl{font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--t2);margin-bottom:10px}
+.counter .cn-val{font-family:var(--ff-s);font-size:44px;font-weight:700;color:var(--gold-l);line-height:1}
+.counter .cn-key{font-size:11px;color:var(--t4);margin-top:8px}
+.histo{display:flex;align-items:flex-end;gap:12px;height:140px;padding:0 10px;margin-bottom:16px;border-bottom:1px solid var(--b1)}
+.histo-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.histo-bar{width:100%;background:var(--gold);min-height:2px;transition:height 0.3s var(--ease)}
+.histo-bar.dim{background:var(--b2)}
+.histo-cval{font-size:13px;color:var(--t2);margin-bottom:6px}
+.histo-clbl{font-size:12px;color:var(--t3);margin-top:8px;text-transform:uppercase;letter-spacing:0.05em}
+.t-majority-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+.t-maj-btn{padding:28px 10px;border:1px solid var(--b1);background:var(--s2);color:var(--t2);font-family:var(--ff-b);font-size:15px;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;transition:all 0.15s}
+.t-maj-btn:hover{border-color:var(--gold);color:var(--t1)}
+.t-maj-btn.on{border-color:var(--gold);background:var(--gold-d);color:var(--gold-l)}
+.polar-flag{display:inline-block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--red-l);border:1px solid var(--red);background:var(--red-d);padding:4px 12px;margin-bottom:16px}
+.disc-prompt{border:1px solid var(--gold);background:var(--gold-d);padding:22px 26px;margin-bottom:22px}
+.disc-prompt .dp-h{font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.disc-prompt p{font-size:20px;color:var(--t1);font-style:italic;margin:0}
+.timer{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.timer .tm-clock{font-family:var(--ff-s);font-size:34px;color:var(--gold-l);min-width:90px}
+.t-opt-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.t-opt{padding:20px 24px;border:1px solid var(--b1);background:var(--s2);color:var(--t1);font-size:18px;line-height:1.5;text-align:left;cursor:pointer;transition:all 0.15s;font-family:var(--ff-b)}
+.t-opt:hover{border-color:var(--gold)}
+.t-opt.on{border-color:var(--gold);background:var(--gold-d)}
+.t-opt .to-count{float:right;font-family:var(--ff-s);font-size:24px;color:var(--gold-l);margin-left:12px}
+.session-reset{position:fixed;bottom:14px;right:16px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t4);background:none;border:none;cursor:pointer;z-index:10}
+.session-reset:hover{color:var(--t2)}
+.nav-hint{position:fixed;bottom:14px;left:16px;font-size:10px;letter-spacing:0.06em;color:var(--t4);z-index:10}
+
+@media(max-width:500px){
+  .stmt-card{padding:32px 24px}
+  .final-grid{grid-template-columns:1fr}
+  .t-mode #app{padding:28px 18px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+"use strict";
+(function(){
+
+/* =====================================================================
+   DATA — statements, belief chains, dilemmas.  No behaviour here.
+   ===================================================================== */
+
+const STMTS=[
+  {id:0,chain:0,pos:0,text:"Effective leaders maintain honest, timely communication with their teams about the company's real situation — even when the news is difficult."},
+  {id:1,chain:1,pos:0,text:"The strongest candidate on objective criteria should always be selected for a role — anything else compromises the integrity of the process."},
+  {id:2,chain:2,pos:0,text:"Employees do their best work when given genuine autonomy over how they approach their goals — not just what to achieve, but how."},
+  {id:3,chain:3,pos:0,text:"A company's primary obligation is to generate strong financial returns for its shareholders."},
+  {id:4,chain:4,pos:0,text:"High performance must be rewarded consistently — making exceptions based on tenure or personal circumstance undermines the culture of meritocracy."},
+  {id:5,chain:0,pos:1,text:"Sharing unconfirmed speculation with employees creates unnecessary anxiety and actively undermines organisational focus and performance."},
+  {id:6,chain:1,pos:1,text:"Structural and historical barriers mean equally talented people from underrepresented groups are significantly less likely to reach senior shortlists."},
+  {id:7,chain:2,pos:1,text:"A leader is ultimately accountable for everything that occurs within their organisation — accountability cannot be meaningfully delegated."},
+  {id:8,chain:3,pos:1,text:"Companies must not engage in practices that cause clear harm to people or communities, even when those practices are technically legal."},
+  {id:9,chain:4,pos:1,text:"Long-serving employees who have built the organisation deserve recognition that goes beyond what current performance metrics alone can capture."},
+  {id:10,chain:0,pos:2,text:"When layoffs are probable but not yet decided, a leader should say nothing to the wider organisation until decisions are formally confirmed."},
+  {id:11,chain:1,pos:2,text:"When two candidates are closely matched, it is appropriate to factor team diversity into the final hiring decision."},
+  {id:12,chain:2,pos:2,text:"If a leader granted full autonomy and an employee's independent decision causes serious harm, the leader cannot fairly be held primarily responsible."},
+  {id:13,chain:3,pos:2,text:"A profitable business unit that demonstrably harms a community should be discontinued — even at significant financial cost to shareholders."},
+  {id:14,chain:4,pos:2,text:"In a promotion decision, the higher performer should always be selected — regardless of how long the other person has served the company."},
+];
+
+const ORDER=[0,6,12,3,9,1,7,13,4,10,2,8,14,5,11];
+
+// One minimal line-icon per belief chain, drawn with currentColor.
+const ICONS=[
+  // 0 Honesty vs Silence — speech
+  '<path class="f-none s-gold" stroke-width="1.5" stroke-linejoin="round" d="M5 4h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-4 4v-4H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/>',
+  // 1 Meritocracy vs Equity — scales
+  '<path class="f-none s-gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 3v17M6 20h12M4.5 6.5l15-2M4.5 6.5l-2.5 6a2.5 2.5 0 0 0 5 0zM19.5 4.5l-2.5 6a2.5 2.5 0 0 0 5 0z"/>',
+  // 2 Autonomy vs Accountability — hand-off arrows
+  '<path class="f-none s-gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 9h13l-4-4M20 15H7l4 4"/>',
+  // 3 Profit vs Ethics — leaf
+  '<path class="f-none s-gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14zM6 18c3-5 6-8 10-10"/>',
+  // 4 Standards vs Loyalty — medal
+  '<path class="f-none s-gold" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 3l2.5 6M15 3l-2.5 6"/><circle class="f-none s-gold" stroke-width="1.5" cx="12" cy="15" r="5"/>',
+];
+function icon(chainId){return '<span class="dom-icon"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICONS[chainId]+'</svg></span>';}
+
+const CHAINS=[
+  {id:0,title:"Honesty vs. Silence",
+   detect:r=>r[0]>=1&&r[10]>=1,
+   fragA:"Honest communication is a leadership obligation.",
+   fragB:"Say nothing until decisions are confirmed.",
+   explain:"You affirm that honest communication is a leadership obligation — yet you also endorse staying silent when layoffs are probable but unconfirmed. The decision to delay is itself a decision about what employees have the right to know.",
+   consistentNote:"You held that transparency has real limits without letting silence tip into deception — a boundary most leaders never draw explicitly."},
+  {id:1,title:"Meritocracy vs. Equity",
+   detect:r=>r[1]>=1&&r[6]>=1&&r[11]<=-1,
+   fragA:"Structural barriers disadvantage equal talent.",
+   fragB:"Never factor diversity into close calls.",
+   explain:"You acknowledge that structural barriers systematically disadvantage equally talented candidates from underrepresented groups — yet you reject factoring diversity into close decisions. Accepting a bias while refusing any mechanism to correct it is not a coherent position.",
+   consistentNote:"You reconciled merit with fairness — recognising structural bias without abandoning the standard, or invoking the standard to deny the bias."},
+  {id:2,title:"Autonomy vs. Accountability",
+   detect:r=>r[7]>=1&&r[12]>=1,
+   fragA:"A leader is accountable for everything.",
+   fragB:"Not responsible for delegated decisions.",
+   explain:"You hold that a leader is ultimately accountable for everything in their organisation — and simultaneously that a leader who delegated fully cannot fairly be held primarily responsible when things go wrong. These two positions cannot both be true.",
+   consistentNote:"You kept accountability and delegation in balance — granting real autonomy without using it to disown the outcomes."},
+  {id:3,title:"Profit vs. Ethics",
+   detect:r=>r[3]>=1&&r[8]>=1&&r[13]<=-1,
+   fragA:"No harm to people or communities.",
+   fragB:"Shareholder returns come first.",
+   explain:"You hold that companies must not cause clear harm to communities — and that shareholder returns are the primary obligation. When a highly profitable unit demonstrably causes that harm, you resist acting. The tension you have avoided naming is now concrete.",
+   consistentNote:"You weighed profit against harm without collapsing one into the other — the rarest balance in the set."},
+  {id:4,title:"Standards vs. Loyalty",
+   detect:r=>r[9]>=1&&r[14]>=1,
+   fragA:"Loyalty deserves recognition beyond metrics.",
+   fragB:"The higher performer should always win.",
+   explain:"You believe long service and loyalty deserve recognition beyond what metrics capture — and also that the higher performer should always win in promotion decisions. When performance and loyalty diverge, one of these beliefs must yield. You have not decided which.",
+   consistentNote:"You honoured loyalty without letting it override performance — a line you can actually act on when the two diverge."},
+];
+
+const DILEMMAS=[
+  {chainId:0,title:"The All-Hands",
+   setup:"You are ten days from a company-wide all-hands meeting. Your CFO has told you privately: Q3 revenue missed targets by 38%. A restructuring — probable but not confirmed — is under active consideration. No decisions have been made. Tomorrow you chair the senior leadership team.",
+   tension:"How do you approach communication with the wider organisation from here?",
+   principles:[
+     {id:"A",label:"Principle A",text:"Honesty first — employees deserve to know the real situation as it currently stands."},
+     {id:"B",label:"Principle B",text:"Communicate decisions, not deliberations — unconfirmed speculation causes more harm than silence."},
+     {id:"C",label:"Principle C",text:"Calibrated transparency — acknowledge that uncertainty exists without speculating on outcomes."},
+   ],
+   escs:[
+     {header:"Development",
+      prompt:"What would holding honesty first actually cost here — and who pays that cost, the leader or the team?",
+      sit:"Word has spread. Two of your best engineers are actively interviewing elsewhere. Your Head of People tells you the uncertainty is costing talent in real time — not in three months.",
+      opts:[
+        {text:"Address the whole company directly — share the situation as honestly as I can frame it.",tags:{A:"holds",B:"abandons",C:"holds"}},
+        {text:"Brief the senior leadership team only. Ask them to manage the narrative within their own functions.",tags:{A:"abandons",B:"holds",C:"revises"}},
+        {text:"Bring the restructuring decision forward — I need something concrete before I say anything.",tags:{A:"revises",B:"holds",C:"revises"}},
+      ]},
+     {header:"Complication",
+      prompt:"When one duty (transparency) collides with another (protecting jobs via the deal), which one is your principle actually about?",
+      sit:"Your legal counsel advises that any early disclosure could jeopardise a confidential acquisition currently in negotiation — one that, if completed, would protect most jobs.",
+      opts:[
+        {text:"Disclose anyway. Employees' right to know comes before deal risk.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Defer to legal advice and delay any disclosure until the acquisition resolves.",tags:{A:"abandons",B:"holds",C:"revises"}},
+        {text:"Partial disclosure — acknowledge publicly that uncertainty exists, citing legal constraints as the reason I cannot say more.",tags:{A:"revises",B:"revises",C:"holds"}},
+      ]},
+     {header:"The Breaking Point",
+      prompt:"If a principle only survives while it is convenient, was it ever a principle? What does the class think this final move reveals?",
+      sit:"The morning of the all-hands, a journalist contacts you. They have the story in full. It will be published this evening — before you speak.",
+      opts:[
+        {text:"Send an all-company message now — lead with my own voice before the story drops.",tags:{A:"holds",B:"revises",C:"holds"}},
+        {text:"Let the story run and respond after publication — acting now looks reactive and amplifies it.",tags:{A:"abandons",B:"holds",C:"abandons"}},
+        {text:"Cancel the all-hands and issue a written statement — remove the live theatre from a fraught situation.",tags:{A:"revises",B:"revises",C:"revises"}},
+      ]},
+   ]},
+  {chainId:1,title:"The Appointment",
+   setup:"You are filling the VP of Engineering role. Two finalists remain. Candidate A scored higher on every structured assessment — technical, leadership, and stakeholder management. Candidate B is a strong cultural fit but scored 10% lower overall. Candidate B would be the first woman at VP level in a leadership team that is currently 88% male.",
+   tension:"What principle guides your decision?",
+   principles:[
+     {id:"A",label:"Principle A",text:"The strongest candidate on objective criteria gets the role — every time, without exception."},
+     {id:"B",label:"Principle B",text:"Representation is a legitimate factor in senior appointments, particularly in close calls."},
+     {id:"C",label:"Principle C",text:"The full picture — I weigh performance, cultural fit, and what the team genuinely needs right now."},
+   ],
+   escs:[
+     {header:"Development",
+      prompt:"Is a hiring decision only a hiring decision — or also a signal to everyone watching? What does Principle A assume it is?",
+      sit:"Three female engineers resigned in the past year. Exit interviews explicitly cite the lack of women in leadership as a factor in their decision to leave.",
+      opts:[
+        {text:"Appoint Candidate A as assessed. Retention issues must be solved structurally, not through individual hiring decisions.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"The retention data changes the calculus — this is not just a hiring decision, it is a signal to the organisation.",tags:{A:"abandons",B:"holds",C:"holds"}},
+        {text:"Pause — open a parallel conversation about the retention problem before finalising the appointment.",tags:{A:"revises",B:"revises",C:"revises"}},
+      ]},
+     {header:"Complication",
+      prompt:"If the 'objective' gap was partly bias, what happens to a principle built on that number? Does the ground move?",
+      sit:"Your hiring panel flags that one of the three assessment dimensions likely contained assessor bias in Candidate A's favour. Adjusting for it would make the gap between the two candidates negligible.",
+      opts:[
+        {text:"Commission an independent review of the assessment before making any decision.",tags:{A:"revises",B:"revises",C:"holds"}},
+        {text:"The assessment is what it is — revisiting it after the fact introduces a different kind of bias.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Accept the panel's finding — if the gap has closed, the diversity case becomes decisive.",tags:{A:"abandons",B:"holds",C:"holds"}},
+      ]},
+     {header:"The Breaking Point",
+      prompt:"When the choice is taken out of your hands, what does your instinct — reopen or proceed — reveal about what you really valued?",
+      sit:"Candidate B accepts a role elsewhere before you reach a decision. You are left with Candidate A as the only remaining finalist. Your board asks whether you should reopen the process.",
+      opts:[
+        {text:"Appoint Candidate A. The process ran; the result stands.",tags:{A:"holds",B:"revises",C:"revises"}},
+        {text:"Reopen the search. The loss of Candidate B means the decision was never fully made.",tags:{A:"revises",B:"holds",C:"holds"}},
+        {text:"Appoint Candidate A immediately — delay signals indecision to the board and the wider team.",tags:{A:"holds",B:"abandons",C:"revises"}},
+      ]},
+   ]},
+  {chainId:2,title:"The Campaign",
+   setup:"You gave your Head of Marketing full and explicit autonomy over the product launch campaign. Without consulting you, they published a statement on a divisive political issue — unrelated to the product. It is generating significant public backlash.",
+   tension:"How do you respond — and how do you think about accountability?",
+   principles:[
+     {id:"A",label:"Principle A",text:"I am accountable for everything that comes from my organisation. Autonomy granted does not change that."},
+     {id:"B",label:"Principle B",text:"Autonomy means ownership. The person who made the call owns the consequences."},
+     {id:"C",label:"Principle C",text:"Shared — I set the framework; they made the decision within it. We share it."},
+   ],
+   escs:[
+     {header:"Development",
+      prompt:"When real money is on the line, does 'I own everything' get easier or harder to say out loud? What is it protecting?",
+      sit:"Three major advertising partners have suspended contracts citing the statement. Your finance team estimates £2 million in annual revenue is at risk.",
+      opts:[
+        {text:"Publicly take ownership of the decision. I lead this organisation — what comes from it comes from me.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Issue a statement clarifying this did not represent company policy and the individual acted outside their remit.",tags:{A:"abandons",B:"holds",C:"revises"}},
+        {text:"Acknowledge the situation, commit to an internal review, and say nothing publicly about who made the decision.",tags:{A:"revises",B:"revises",C:"holds"}},
+      ]},
+     {header:"Complication",
+      prompt:"Does a good-faith, principled act change who is accountable — or only how you feel about holding them to it?",
+      sit:"It emerges the Head of Marketing acted from a deeply held ethical conviction — not recklessness. They believed the company had an obligation to speak. Several employees have written to say they agree.",
+      opts:[
+        {text:"The conviction does not change the accountability structure. I still own this.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Ethical conviction is not the same as authorisation. They made an independent call that was not theirs to make.",tags:{A:"revises",B:"holds",C:"revises"}},
+        {text:"A principled act in good faith is different. I should defend it, not distance myself from it.",tags:{A:"revises",B:"abandons",C:"holds"}},
+      ]},
+     {header:"The Breaking Point",
+      prompt:"The board wants a name and a consequence. Can 'I am accountable' survive contact with an actual cost to someone?",
+      sit:"The board asks directly: who is accountable, and what are the consequences? They expect a name and an outcome.",
+      opts:[
+        {text:"I am accountable. Any consequences should rest with me, not with them.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"The Head of Marketing acted outside their mandate. The consequences are theirs.",tags:{A:"abandons",B:"holds",C:"revises"}},
+        {text:"Accountability is shared. I will propose a joint review with consequences distributed accordingly.",tags:{A:"revises",B:"revises",C:"holds"}},
+      ]},
+   ]},
+  {chainId:3,title:"The Unit",
+   setup:"Your highest-margin business unit generates 42% of group profit. A credible independent report has linked its operations to measurable air quality degradation in the region where your primary supplier operates. The practice is entirely legal. The evidence is strong but not yet definitive.",
+   tension:"How do you proceed?",
+   principles:[
+     {id:"A",label:"Principle A",text:"Financial obligation to shareholders comes first — legal operations are legitimate operations."},
+     {id:"B",label:"Principle B",text:"If credible harm exists, we act — the legal threshold is a floor, not our standard."},
+     {id:"C",label:"Principle C",text:"Balance — take meaningful steps to investigate and mitigate without destroying shareholder value prematurely."},
+   ],
+   escs:[
+     {header:"Development",
+      prompt:"'Legal' and 'right' have now split apart. Which one is Principle A actually anchored to — and is that a floor or a ceiling?",
+      sit:"A second independent report confirms the causal link beyond reasonable doubt. The harm is measurable and ongoing. The practice remains fully legal.",
+      opts:[
+        {text:"Confirmed harm changes nothing legally — operations continue while we explore mitigation options.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Confirmed harm is the threshold. We begin wind-down planning immediately.",tags:{A:"abandons",B:"holds",C:"revises"}},
+        {text:"Commission a third-party impact assessment and set a six-month remediation target before any operational decision.",tags:{A:"revises",B:"revises",C:"holds"}},
+      ]},
+     {header:"Complication",
+      prompt:"Would holding your principle mean looking the affected community in the eye — or avoiding the room? Which does it ask of you?",
+      sit:"A formal delegation from the affected community has requested a meeting. Your communications team advises that engaging publicly could significantly amplify the story.",
+      opts:[
+        {text:"Meet with them. If we are causing harm, the least we owe is to hear it directly.",tags:{A:"revises",B:"holds",C:"holds"}},
+        {text:"Decline the public meeting. Engage through legal and community affairs channels only.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Meet privately, with legal present, on a non-attributable basis.",tags:{A:"revises",B:"revises",C:"revises"}},
+      ]},
+     {header:"The Breaking Point",
+      prompt:"Put a number on it: what is the most this principle is allowed to cost before it bends? The class should name a figure.",
+      sit:"Acting will cost 12% of annual group profit and a likely 18% short-term share price decline. Not acting is becoming a growing reputational liability. Your major institutional shareholders are watching.",
+      opts:[
+        {text:"We act. The harm is confirmed. The financial cost is the price of operating with integrity.",tags:{A:"abandons",B:"holds",C:"revises"}},
+        {text:"We continue operations. The reputational risk is manageable; the financial hit is not justified without legal compulsion.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Phase out the unit over 24 months — limits the harm, limits the financial shock, gives the market time to adjust.",tags:{A:"revises",B:"revises",C:"holds"}},
+      ]},
+   ]},
+  {chainId:4,title:"The Promotion",
+   setup:"Promotion cycle. One Director vacancy. Two strong candidates: Alex has been with the company eleven years — built the function from thirty people to two hundred, mentors extensively, and consistently meets targets. Jordan joined eighteen months ago, hits 130% of target every quarter, and is visibly ambitious.",
+   tension:"There is one role. How do you decide?",
+   principles:[
+     {id:"A",label:"Principle A",text:"Performance drives promotion. Metrics are the most objective basis for decisions."},
+     {id:"B",label:"Principle B",text:"Loyalty and contribution are part of performance. Legacy counts."},
+     {id:"C",label:"Principle C",text:"The role defines the decision — I promote whoever best fits what the function needs going forward."},
+   ],
+   escs:[
+     {header:"Development",
+      prompt:"Is keeping your best people 'performance', or a different value smuggled in? Where does loyalty end and retention math begin?",
+      sit:"Your HR director flags a credible risk: if Alex is passed over, they may leave — and likely take two other long-servers with them. That is institutional knowledge and client relationships built over a decade.",
+      opts:[
+        {text:"The retention risk does not change the performance calculus. Jordan gets the role.",tags:{A:"holds",B:"abandons",C:"revises"}},
+        {text:"Retention of key people is itself a performance consideration. The calculus shifts toward Alex.",tags:{A:"revises",B:"holds",C:"holds"}},
+        {text:"Pause the decision and explore whether the function can be restructured to create a path for both.",tags:{A:"revises",B:"revises",C:"revises"}},
+      ]},
+     {header:"Complication",
+      prompt:"If the metric was partly luck of territory, is 'performance drives promotion' still a clean rule — or now a judgement call in disguise?",
+      sit:"A closer review reveals Jordan's territory has structural advantages — larger accounts, weaker competitive market — that partially explain the outperformance. Adjusted for territory, the gap narrows significantly.",
+      opts:[
+        {text:"Adjusted or not, Jordan is still outperforming. That is the number I use.",tags:{A:"holds",B:"revises",C:"revises"}},
+        {text:"If the gap was inflated by structural factors, the performance case for Jordan is weaker than it appeared.",tags:{A:"revises",B:"holds",C:"holds"}},
+        {text:"Rebuild the assessment framework before making the call — I am not comfortable with the data I have.",tags:{A:"revises",B:"revises",C:"holds"}},
+      ]},
+     {header:"The Breaking Point",
+      prompt:"A competitor's ultimatum is forcing the clock. Does deciding under pressure honour your principle — or expose that it was never firm?",
+      sit:"Jordan has received an offer from a direct competitor. They will accept it within 48 hours if you do not promote them. The decision can no longer wait.",
+      opts:[
+        {text:"Promote Jordan. Losing them to a competitor is the worse outcome, regardless of how we got here.",tags:{A:"revises",B:"abandons",C:"revises"}},
+        {text:"Promote Alex. I will not make a promotion decision under ultimatum — that sets a precedent I cannot live with.",tags:{A:"revises",B:"holds",C:"holds"}},
+        {text:"Make the decision I would have made without the ultimatum, and accept whichever outcome follows.",tags:{A:"holds",B:"holds",C:"holds"}},
+      ]},
+   ]},
+];
+
+/* =====================================================================
+   ENGINE — pure functions.  Take explicit inputs, return results.
+   They never read the S state object, so teacher mode reuses them with
+   class-level response vectors.
+   ===================================================================== */
+
+// analyze(responses[15]) -> results object.
+// responses may contain null (unanswered); coerced to 0 for detection.
+function analyze(responses){
+  const r=responses.map(v=>v==null?0:v);
+  const chainResults=CHAINS.map(c=>{
+    const idxs=[c.id,c.id+5,c.id+10];
+    const strength=idxs.reduce((s,i)=>s+Math.abs(r[i]),0); // 0..6
+    return {id:c.id,title:c.title,contradiction:c.detect(r),
+      explain:c.explain,consistentNote:c.consistentNote,
+      fragA:c.fragA,fragB:c.fragB,strength,idxs};
+  });
+  // Continuous coherence: each chain worth 20 pts; a contradiction costs
+  // 20 * (how strongly it was committed to).  Lightly-held contradictions
+  // cost less, so scores are continuous rather than 20-point steps.
+  let penalty=0;
+  chainResults.forEach(cr=>{if(cr.contradiction)penalty+=20*(cr.strength/6);});
+  const score=Math.max(0,Math.min(100,Math.round(100-penalty)));
+
+  // Commitment index — mean |response|.  Heavy neutrality trivially avoids
+  // every contradiction, so surface it rather than reporting a clean score.
+  const commitmentIndex=r.reduce((s,v)=>s+Math.abs(v),0)/15;
+  const abstained=responses.reduce((n,v)=>n+((v==null||v===0)?1:0),0);
+
+  // Strongest contradiction targets the stress test.
+  const contradicted=chainResults.filter(c=>c.contradiction);
+  let stressId;
+  if(contradicted.length){
+    let best=contradicted[0],mx=-1;
+    contradicted.forEach(cr=>{if(cr.strength>mx){mx=cr.strength;best=cr;}});
+    stressId=best.id;
+  }else stressId=3;
+
+  return {chainResults,score,commitmentIndex,abstained,stressId};
+}
+
+// Per-chain response strength as mean |response| in 0..2 (for the radar).
+function chainMagnitudes(responses){
+  const r=responses.map(v=>v==null?0:v);
+  return CHAINS.map(c=>{
+    const idxs=[c.id,c.id+5,c.id+10];
+    return idxs.reduce((s,i)=>s+Math.abs(r[i]),0)/3; // 0..2
+  });
+}
+
+// Principle trajectory across the three escalations.
+// reasons[i] is 'updated' | 'buckled' | null (only meaningful for
+// revises/abandons moves).
+function scoreTrajectory(dilemma,principleId,escChoices,reasons){
+  const nodes=escChoices.map((ci,i)=>{
+    const tag=dilemma.escs[i].opts[ci].tags[principleId];
+    return {tag,reason:reasons[i]||null,header:dilemma.escs[i].header,text:dilemma.escs[i].opts[ci].text};
+  });
+  const h=nodes.filter(n=>n.tag==="holds").length;
+  const rev=nodes.filter(n=>n.tag==="revises").length;
+  const ab=nodes.filter(n=>n.tag==="abandons").length;
+  const total=nodes.length||1;
+  const score=Math.round(((h+rev*0.5)/total)*100);
+  const moves=nodes.filter(n=>n.tag!=="holds");
+  const principled=moves.filter(n=>n.reason==="updated").length;
+  const buckled=moves.filter(n=>n.reason==="buckled").length;
+  return {nodes,h,rev,ab,score,principled,buckled};
+}
+
+// Whether a chosen escalation option requires a revision-reason prompt.
+function needsReason(dilemma,principleId,escIdx,optIdx){
+  const tag=dilemma.escs[escIdx].opts[optIdx].tags[principleId];
+  return tag==="revises"||tag==="abandons";
+}
+
+/* =====================================================================
+   STATE
+   ===================================================================== */
+
+const params=new URLSearchParams(location.search);
+
+const S={
+  mode:params.get("mode")==="teacher"?"teacher":"student",
+  screen:"intro",
+  // student
+  responses:new Array(15).fill(null),
+  curIdx:0,
+  results:null,
+  dilemma:null,
+  principleId:null,
+  escStep:1,
+  escChoices:[],
+  reasons:[null,null,null],
+  awaitingReason:false,
+  trajectory:null,
+  advancing:false,
+  playedChains:[],
+  // teacher
+  inputStyle:"tally",   // 'tally' | 'majority'
+  tallies:{},           // stmtId -> [5 counts]
+  majority:{},          // stmtId -> value (-2..2)
+  escTally:{},          // escStep -> [counts per option]
+  escMajority:{},       // escStep -> option index
+  timer:null,
+  timerLeft:0,
+  timerId:null,
+};
+
+const STUDENT_SCREENS=["intro","assessment","analyzing","reveal","briefing","scenario","escalation","final","debrief"];
+const TEACHER_SCREENS=["tintro","tsetup","tassessment","tanalyzing","treveal","tbriefing","tscenario","tescalation","tfinal","tdebrief"];
+
+function screensFor(){return S.mode==="teacher"?TEACHER_SCREENS:STUDENT_SCREENS;}
+
+// go(): single validated transition point.
+function go(sc){
+  if(!screensFor().includes(sc)){console.warn("unknown screen",sc);return;}
+  stopTimer();
+  S.screen=sc;
+  window.scrollTo(0,0);
+  render();
+}
+
+/* =====================================================================
+   VIEW — render functions return HTML strings; MOUNT[screen] runs after
+   injection for anything that needs live DOM (animation, timers).
+   ===================================================================== */
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+const VIEW={
+  intro:rIntro,assessment:rAssessment,analyzing:rAnalyzing,reveal:rReveal,
+  briefing:rBriefing,scenario:rScenario,escalation:rEscalation,final:rFinal,debrief:rDebrief,
+  tintro:rTIntro,tsetup:rTSetup,tassessment:rTAssessment,tanalyzing:rAnalyzing,
+  treveal:rTReveal,tbriefing:rTBriefing,tscenario:rTScenario,tescalation:rTEscalation,
+  tfinal:rTFinal,tdebrief:rTDebrief,
+};
+const MOUNT={reveal:mountReveal,treveal:mountReveal,final:mountFinal,tfinal:mountFinal,tescalation:mountTEsc};
+
+function render(){
+  const app=document.getElementById("app");
+  document.body.classList.toggle("t-mode",S.mode==="teacher");
+  const fn=VIEW[S.screen]||rIntro;
+  app.innerHTML="";
+  const div=document.createElement("div");
+  // Entrance animation only fires on a real screen change, so within-screen
+  // re-renders (tallying hands, selecting an option) don't replay the slide.
+  const changed=S._last!==S.screen;
+  div.className="screen"+(changed?" enter":"");
+  S._last=S.screen;
+  div.innerHTML=fn();
+  app.appendChild(div);
+  if(S.mode==="teacher"){
+    app.insertAdjacentHTML("beforeend",'<button class="session-reset" data-action="reset-session">Reset session</button><span class="nav-hint">&larr;/&rarr; navigate</span>');
+  }
+  const m=MOUNT[S.screen];if(m)m();
+}
+
+/* ---------- STUDENT: intro ---------- */
+function rIntro(){
+  return `
+<span class="eyebrow">Meridian Group — Leadership Assessment</span>
+<div class="title-bar"></div>
+<h1>The Leadership<br>Mirror</h1>
+<p class="lead">You are the Chief Executive of Meridian Group — a professional services firm with 2,400 employees across six offices.</p>
+<p>Your reputation has been built on clarity, principle, and decisive judgment. What follows is not a test of knowledge. It is a test of whether the beliefs you hold are consistent with each other — and with your actions under pressure.</p>
+<p>The assessment has two stages. In the first, you respond to fifteen leadership statements. In the second, you are placed inside a real scenario and asked to act.</p>
+<hr>
+<p class="muted-note">15 statements &mdash; approximately 8 minutes. Use keys 1&ndash;5 to answer.</p>
+<div class="spacer"></div>
+<div class="btn-row">
+  <button class="btn primary" data-action="start">Begin Assessment &rarr;</button>
+  <button class="textlink" data-action="teacher-mode">Teacher projection mode</button>
+</div>`;
+}
+
+/* ---------- STUDENT: Part I assessment ---------- */
+function rAssessment(){
+  const idx=S.curIdx;
+  const stmt=STMTS[ORDER[idx]];
+  const pct=(idx/15)*100;
+  const cur=S.responses[ORDER[idx]];
+  const labels=["Strongly<br>Disagree","Disagree","Neutral","Agree","Strongly<br>Agree"];
+  const vals=[-2,-1,0,1,2];
+  const back=idx>0?`<button class="btn muted" data-action="back">&larr; Previous</button>`:"";
+  return `
+<span class="eyebrow">Part I &mdash; Beliefs &amp; Positions</span>
+<div class="bar-wrap">
+  <div class="bar-meta"><span>Statement ${idx+1} of 15</span><span>${icon(stmt.chain)}</span></div>
+  <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+</div>
+<div class="stmt-card fade">
+  ${icon(stmt.chain)}
+  <span class="stmt-num">${String(idx+1).padStart(2,"0")}</span>
+  <p class="stmt-text">${esc(stmt.text)}</p>
+</div>
+<div class="scale" role="group" aria-label="Response scale">
+  ${vals.map((v,i)=>`<button class="sc-btn${cur===v?' on':''}" role="button" aria-pressed="${cur===v}" data-action="answer" data-arg="${ORDER[idx]}:${v}">${labels[i]}<span class="kbd">${i+1}</span></button>`).join('')}
+</div>
+<div class="scale-legend"><span>Strongly Disagree</span><span>Strongly Agree</span></div>
+<div class="spacer"></div>
+<div class="btn-row">${back}<span class="muted-note">Press 1&ndash;5 to answer, Enter to continue.</span></div>`;
+}
+
+function rAnalyzing(){
+  return `
+<div class="analyzing">
+  <span class="eyebrow">Processing</span>
+  <h2>Mapping ${S.mode==="teacher"?"the class's":"your"} positions</h2>
+  <p>Analysing fifteen positions across five belief domains for internal consistency.</p>
+  <div class="ld-dots"><div class="ld-dot"></div><div class="ld-dot"></div><div class="ld-dot"></div></div>
+</div>`;
+}
+
+/* ---------- SVG: coherence dial (arc gauge) ---------- */
+function svgDial(){
+  // 270deg gauge; value arc animated in mount.
+  return `
+<svg viewBox="0 0 220 180" width="240" role="img" aria-label="Coherence dial">
+  <g transform="translate(110,105)">
+    <circle class="f-none s-track" cx="0" cy="0" r="80" stroke-width="12"
+      stroke-dasharray="376.99 502.65" stroke-linecap="round" transform="rotate(135)"/>
+    <circle id="dial-arc" class="f-none" cx="0" cy="0" r="80" stroke-width="12"
+      stroke-dasharray="0 502.65" stroke-linecap="round" transform="rotate(135)"/>
+    <text id="dial-num" class="svg-num f-t1" x="0" y="4" text-anchor="middle" font-size="46">0</text>
+    <text class="svg-lbl f-t3" x="0" y="34" text-anchor="middle">Coherence</text>
+  </g>
+</svg>`;
+}
+function bandColorVar(score){return score>=80?"var(--grn-l)":score>=60?"var(--gold-l)":"var(--red-l)";}
+function animateDial(finalScore){
+  const arc=document.getElementById("dial-arc");
+  const num=document.getElementById("dial-num");
+  if(!arc||!num)return;
+  const col=bandColorVar(finalScore);
+  arc.style.stroke=col;
+  const maxLen=376.99, circ=502.65;
+  const t0=performance.now(),dur=1100;
+  function frame(t){
+    const p=Math.min(1,(t-t0)/dur);
+    const eased=1-Math.pow(1-p,3);
+    const val=Math.round(finalScore*eased);
+    num.textContent=val;
+    const len=maxLen*(val/100);
+    arc.setAttribute("stroke-dasharray",len+" "+circ);
+    if(p<1)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------- SVG: belief pentagon (radar) ---------- */
+function svgPentagon(responses,chainResults){
+  const mags=chainMagnitudes(responses); // 0..2 per chain
+  const cx=140,cy=140,maxR=100;
+  const pt=(i,r)=>{
+    const ang=(-90+i*72)*Math.PI/180;
+    return [cx+Math.cos(ang)*r,cy+Math.sin(ang)*r];
+  };
+  // grid rings
+  let grid="";
+  [0.33,0.66,1].forEach(f=>{
+    const p=[0,1,2,3,4].map(i=>pt(i,maxR*f).map(n=>n.toFixed(1)).join(",")).join(" ");
+    grid+=`<polygon class="f-none s-b1" points="${p}" stroke-width="1"/>`;
+  });
+  // axes + labels
+  let axes="",labels="";
+  for(let i=0;i<5;i++){
+    const[ax,ay]=pt(i,maxR);
+    axes+=`<line class="s-b1" x1="${cx}" y1="${cy}" x2="${ax.toFixed(1)}" y2="${ay.toFixed(1)}" stroke-width="1"/>`;
+    const[lx,ly]=pt(i,maxR+16);
+    const anchor=Math.abs(lx-cx)<6?"middle":(lx>cx?"start":"end");
+    labels+=`<text class="svg-lbl f-t3" x="${lx.toFixed(1)}" y="${(ly+3).toFixed(1)}" text-anchor="${anchor}">${CHAINS[i].title.split(" ")[0]}</text>`;
+  }
+  // data polygon points
+  const dpts=mags.map((m,i)=>pt(i,maxR*(m/2)));
+  // edges: red + jagged where either endpoint chain is contradicted
+  let edges="",verts="";
+  for(let i=0;i<5;i++){
+    const a=dpts[i],b=dpts[(i+1)%5];
+    const bad=chainResults[i].contradiction||chainResults[(i+1)%5].contradiction;
+    if(bad){
+      // jagged fractured edge
+      const mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
+      const dx=b[0]-a[0],dy=b[1]-a[1];
+      const nx=-dy,ny=dx,nl=Math.hypot(nx,ny)||1;
+      const off=7;
+      const j1=[mx-dx*0.15+nx/nl*off,my-dy*0.15+ny/nl*off];
+      const j2=[mx+dx*0.15-nx/nl*off,my+dy*0.15-ny/nl*off];
+      edges+=`<polyline class="f-none s-red" points="${a[0].toFixed(1)},${a[1].toFixed(1)} ${j1[0].toFixed(1)},${j1[1].toFixed(1)} ${j2[0].toFixed(1)},${j2[1].toFixed(1)} ${b[0].toFixed(1)},${b[1].toFixed(1)}" stroke-width="2"/>`;
+    }else{
+      edges+=`<line class="s-goldl" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke-width="2"/>`;
+    }
+  }
+  dpts.forEach((p,i)=>{
+    const cls=chainResults[i].contradiction?"f-red":"f-goldl";
+    verts+=`<circle class="${cls}" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.5"/>`;
+  });
+  const fillPts=dpts.map(p=>p.map(n=>n.toFixed(1)).join(",")).join(" ");
+  return `
+<svg viewBox="-44 0 368 300" width="300" role="img" aria-label="Belief pentagon">
+  ${grid}${axes}
+  <polygon points="${fillPts}" fill="var(--gold-d)"/>
+  ${edges}${verts}${labels}
+</svg>`;
+}
+
+/* ---------- SVG: tension diagram per contradiction ---------- */
+function svgTension(cr){
+  const wrap=t=>{
+    // crude word-wrap into <=3 tspans
+    const words=t.split(" ");const lines=[];let ln="";
+    words.forEach(w=>{if((ln+" "+w).trim().length>20){lines.push(ln.trim());ln=w;}else ln+=" "+w;});
+    if(ln.trim())lines.push(ln.trim());
+    return lines.slice(0,3);
+  };
+  const nodeText=(x,lines)=>lines.map((l,i)=>`<tspan x="${x}" dy="${i===0?0:13}">${esc(l)}</tspan>`).join("");
+  const la=wrap(cr.fragA),lb=wrap(cr.fragB);
+  return `
+<svg viewBox="0 0 460 150" width="100%" role="img" aria-label="Tension between two beliefs">
+  <rect class="f-bg s-red" x="8" y="30" width="180" height="90" rx="4" stroke-width="1.5"/>
+  <rect class="f-bg s-red" x="272" y="30" width="180" height="90" rx="4" stroke-width="1.5"/>
+  <text class="svg-lbl f-red" x="98" y="88" text-anchor="middle">${nodeText(98,la)}</text>
+  <text class="svg-lbl f-red" x="362" y="88" text-anchor="middle">${nodeText(362,lb)}</text>
+  <polyline class="f-none s-red" stroke-width="2.5" points="188,75 210,60 228,90 246,60 264,75"/>
+  <text class="svg-lbl f-t3" x="230" y="130" text-anchor="middle">Strained</text>
+</svg>`;
+}
+
+/* ---------- STUDENT: reveal ---------- */
+function rReveal(){
+  const R=S.results, score=R.score;
+  const subs=["Perfect internal consistency across all five belief domains.","Strong coherence — one area of tension identified.","Moderate coherence — areas of significant tension.","Substantial inconsistency across multiple belief domains.","Deep contradictions across several core positions."];
+  const si=score>=100?0:score>=80?1:score>=60?2:score>=40?3:4;
+
+  const commitFlag=R.commitmentIndex<0.6?`
+<div class="commit-flag">
+  <div class="cf-h">Commitment index &mdash; ${R.commitmentIndex.toFixed(2)}</div>
+  <p>You avoided commitment on ${R.abstained} of 15 statements. Coherence achieved by abstention is untested coherence — the contradictions below were simply never activated. Consider retaking with positions you would actually defend.</p>
+</div>`:"";
+
+  const contradicted=R.chainResults.filter(c=>c.contradiction);
+  const tensionSvgs=contradicted.map(cr=>`
+<div class="jrow bad">
+  <div class="jrow-head">${icon(cr.id)}<span class="jrow-title">${esc(cr.title)}</span></div>
+  <div class="svg-wrap" style="padding:16px;margin:12px 0">${svgTension(cr)}</div>
+  <div class="jrow-note">${esc(cr.explain)}</div>
+</div>`).join("");
+
+  const okRows=R.chainResults.filter(c=>!c.contradiction).map(cr=>`
+<div class="jrow ok">
+  <div class="jrow-head">${icon(cr.id)}<span class="jrow-title">${esc(cr.title)}</span></div>
+  <div class="jrow-note">${esc(cr.consistentNote)}</div>
+</div>`).join("");
+
+  return `
+<span class="eyebrow">Part I &mdash; Results</span>
+<div class="svg-wrap">${svgDial()}<div class="svg-cap">${subs[si]}</div></div>
+${commitFlag}
+<h3>Belief pentagon</h3>
+<p style="margin-bottom:16px">Each axis shows how strongly you committed in that domain. Fractured red edges mark the contradictions.</p>
+<div class="svg-wrap">${svgPentagon(S.responses,R.chainResults)}<div class="svg-cap">Response strength by belief domain</div></div>
+<h3>Belief domain analysis</h3>
+<p style="margin-bottom:18px">Each domain tests whether two principles you simultaneously hold are logically compatible.</p>
+${tensionSvgs}${okRows}
+<hr>
+<button class="btn primary" data-action="go" data-arg="briefing">Continue to Part II &rarr;</button>`;
+}
+function mountReveal(){animateDial(S.results.score);}
+
+/* ---------- STUDENT: briefing ---------- */
+function rBriefing(){
+  const d=S.dilemma;
+  const cr=S.results.chainResults.find(r=>r.id===S.results.stressId);
+  const note=cr.contradiction
+    ?`Your responses in the <em>${esc(cr.title)}</em> domain revealed a specific internal tension. The scenario that follows places you directly inside it.`
+    :`Your positions were internally consistent across all domains. The scenario that follows engages the most universally contested area of business leadership: the intersection of profit and ethics.`;
+  return `
+<span class="eyebrow">Part II &mdash; The Stress Test</span>
+<div class="head-icon">${icon(d.chainId)}<h2>${esc(d.title)}</h2></div>
+<p>${note}</p>
+<div class="brief-block">
+  <div class="bb-head">What happens now</div>
+  <p>You will be placed inside a real leadership scenario. You will select the principle governing your decisions. The scenario will then escalate — three times — in ways specifically designed to strain that principle. After any decision that bends the principle, you will be asked why. Your trajectory will be tracked.</p>
+</div>
+<p class="muted-note">3 escalations &mdash; approximately 3 minutes</p>
+<div class="spacer"></div>
+<button class="btn primary" data-action="go" data-arg="scenario">Enter the Scenario &rarr;</button>`;
+}
+
+/* ---------- STUDENT: scenario / principle selection ---------- */
+function rScenario(){
+  const d=S.dilemma;
+  const pbtns=d.principles.map(p=>`
+<button class="p-btn${S.principleId===p.id?' on':''}" role="button" aria-pressed="${S.principleId===p.id}" data-action="selP" data-arg="${p.id}">
+  <span class="pl">${esc(p.label)}</span>
+  <span class="pt">${esc(p.text)}</span>
+</button>`).join('');
+  const disabled=!S.principleId;
+  return `
+<span class="eyebrow">Part II &mdash; ${esc(d.title)}</span>
+<div class="scene-card">
+  <p class="sc-setup">${esc(d.setup)}</p>
+  <p class="sc-q">${esc(d.tension)}</p>
+</div>
+<h3>State your governing principle</h3>
+<p style="margin-bottom:16px">This will be held against your decisions throughout the scenario.</p>
+${pbtns}
+<div class="spacer"></div>
+<button class="btn primary" data-action="startEsc"${disabled?" disabled":""}>Proceed with this principle &rarr;</button>`;
+}
+
+/* ---------- STUDENT: escalation ---------- */
+function rEscalation(){
+  const d=S.dilemma;
+  const step=S.escStep;
+  const escd=d.escs[step-1];
+  const princ=d.principles.find(p=>p.id===S.principleId);
+  const sel=S.escChoices[step-1];
+  const hasSel=sel!==undefined&&sel!==null;
+  const dots=[1,2,3].map(i=>{
+    let c='step-dot';
+    if(i<step)c+=' done';else if(i===step)c+=' cur';
+    return`<div class="${c}"></div>`;
+  }).join('');
+  const opts=escd.opts.map((o,i)=>`<button class="c-btn${sel===i?' on':''}" role="button" aria-pressed="${sel===i}" data-action="selC" data-arg="${i}">${esc(o.text)}</button>`).join('');
+
+  // Reflective-equilibrium reason prompt after a revises/abandons move.
+  let reasonBlock="";
+  if(hasSel && needsReason(d,S.principleId,step-1,sel)){
+    const rz=S.reasons[step-1];
+    reasonBlock=`
+<div class="reason-prompt">
+  <div class="rp-h">That decision moved away from your stated principle. Which was it?</div>
+  <div class="rp-btns">
+    <button class="rp-btn${rz==='updated'?' on':''}" data-action="reason" data-arg="updated">I updated on new information &mdash; the situation genuinely warranted a different call.</button>
+    <button class="rp-btn${rz==='buckled'?' on':''}" data-action="reason" data-arg="buckled">I buckled under pressure &mdash; I know what the principle asked and did not do it.</button>
+  </div>
+</div>`;
+  }
+
+  const reasonSatisfied = !hasSel ? false : (!needsReason(d,S.principleId,step-1,sel) || S.reasons[step-1]);
+  const isLast=step===3;
+  const btnLabel=isLast?'Complete Assessment &rarr;':'Next Escalation &rarr;';
+  const btnAction=isLast?'finalize':'nextEsc';
+  const btnHtml=reasonSatisfied?`<button class="btn primary" data-action="${btnAction}">${btnLabel}</button>`:"";
+
+  return `
+<span class="eyebrow">Part II &mdash; ${esc(d.title)}</span>
+<div class="bar-wrap">
+  <div class="bar-meta"><span>Escalation ${step} of 3</span><span></span></div>
+  <div class="bar"><div class="bar-fill" style="width:${(step/3)*100}%"></div></div>
+</div>
+<div class="steps">${dots}<span class="step-label">${esc(escd.header)}</span></div>
+<div class="princ-bar">
+  <span class="pb-label">Your principle</span>
+  <span class="pb-text">${esc(princ.text)}</span>
+</div>
+<div class="esc-card">
+  <p class="esc-sit">${esc(escd.sit)}</p>
+  <div class="esc-q">How do you respond?</div>
+  ${opts}
+</div>
+${reasonBlock}
+${btnHtml}`;
+}
+
+/* ---------- SVG: escalation trajectory ---------- */
+function svgTrajectory(traj){
+  const W=460,H=170,padX=60;
+  const yFor=tag=>tag==="holds"?45:tag==="revises"?90:135;
+  const colClass=tag=>tag==="holds"?"grn":tag==="revises"?"gold":"red";
+  const xs=[padX,W/2,W-padX];
+  const pts=traj.nodes.map((n,i)=>[xs[i],yFor(n.tag)]);
+  // baseline (the stated principle)
+  let out=`<line class="s-b1" x1="${padX-20}" y1="45" x2="${W-padX+20}" y2="45" stroke-width="1" stroke-dasharray="4 4"/>`;
+  out+=`<text class="svg-lbl f-t3" x="${padX-20}" y="38" text-anchor="start">Principle held</text>`;
+  // connecting path
+  out+=`<polyline class="f-none s-track" stroke-width="2" points="${pts.map(p=>p.join(",")).join(" ")}"/>`;
+  pts.forEach((p,i)=>{
+    const cc=colClass(traj.nodes[i].tag);
+    out+=`<circle class="f-${cc==='gold'?'goldl':cc}" cx="${p[0]}" cy="${p[1]}" r="8"/>`;
+    out+=`<text class="svg-lbl f-t2" x="${p[0]}" y="${p[1]+26}" text-anchor="middle">${esc(traj.nodes[i].header)}</text>`;
+    out+=`<text class="svg-lbl f-t3" x="${p[0]}" y="${p[1]-14}" text-anchor="middle">${traj.nodes[i].tag.toUpperCase()}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Escalation trajectory">${out}</svg>`;
+}
+
+/* ---------- SVG: quadrant plot ---------- */
+function svgQuadrant(coh,con){
+  const W=340,H=340,m=44,plot=W-2*m;
+  const divX=m+plot*0.6, divY=m+plot*0.4; // 60/60 dividers
+  const px=m+plot*(con/100);
+  const py=m+plot*(1-coh/100);
+  return `
+<svg viewBox="0 0 ${W} ${H}" width="320" role="img" aria-label="Coherence by consistency quadrant">
+  <rect class="f-none s-b1" x="${m}" y="${m}" width="${plot}" height="${plot}" stroke-width="1"/>
+  <line class="s-b1" x1="${divX}" y1="${m}" x2="${divX}" y2="${m+plot}" stroke-width="1" stroke-dasharray="3 3"/>
+  <line class="s-b1" x1="${m}" y1="${divY}" x2="${m+plot}" y2="${divY}" stroke-width="1" stroke-dasharray="3 3"/>
+  <text class="svg-lbl f-t3" x="${m+8}" y="${m+18}" text-anchor="start">Untested</text>
+  <text class="svg-lbl f-goldl" x="${m+plot-8}" y="${m+18}" text-anchor="end">Anchored</text>
+  <text class="svg-lbl f-t3" x="${m+8}" y="${m+plot-10}" text-anchor="start">Fragmented</text>
+  <text class="svg-lbl f-t3" x="${m+plot-8}" y="${m+plot-10}" text-anchor="end">Adaptive</text>
+  <text class="svg-lbl f-t3" x="${m+plot/2}" y="${H-14}" text-anchor="middle">Consistency &rarr;</text>
+  <text class="svg-lbl f-t3" x="14" y="${m+plot/2}" text-anchor="middle" transform="rotate(-90,14,${m+plot/2})">Coherence &rarr;</text>
+  <circle class="f-gold" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="7"/>
+  <circle class="f-none s-goldl" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="12" stroke-width="1.5"/>
+</svg>`;
+}
+function quadrantName(coh,con){
+  const hc=coh>=60,hk=con>=60;
+  return hc&&hk?"Anchored":hc&&!hk?"Adaptive":!hc&&hk?"Untested":"Fragmented";
+}
+
+/* ---------- STUDENT: final ---------- */
+function rFinal(){
+  const R=S.results, coh=R.score, con=S.trajectory.score;
+  const t=S.trajectory;
+  const d=S.dilemma;
+  const p=d.principles.find(x=>x.id===S.principleId);
+  const bad=R.chainResults.filter(r=>r.contradiction);
+
+  const cohGrd=coh>=100?"Fully coherent":coh>=80?"Mostly coherent":coh>=60?"Partially coherent":coh>=40?"Significantly inconsistent":"Deeply inconsistent";
+  let conGrd;
+  if(t.buckled>0&&t.principled===0)conGrd="Moved under pressure — capitulation, not revision.";
+  else if(t.principled>0&&t.buckled===0&&t.rev+t.ab>0)conGrd="Moved, but on principle — you updated on new information.";
+  else if(con>=80)conGrd="Held your principle throughout.";
+  else if(con>=60)conGrd="Mostly consistent — one material deviation.";
+  else conGrd="Mixed — a blend of principled revision and pressure.";
+
+  let insight;
+  if(coh>=80&&con>=80)insight="Your beliefs are internally consistent, and you held your stated principle when tested. That combination is uncommon — and worth interrogating. Held consistency can be integrity, or it can be dogmatism wearing integrity's clothes. The tell is whether you could have named, in advance, the evidence that would have changed your mind. If nothing could, you were not being principled; you were being immovable.";
+  else if(coh>=80&&con<60)insight="Your belief system is consistent, but under pressure you moved away from the principle you committed to. Whether that was principled revision or capitulation is the whole question — and your own answers to the 'why' prompts are the most honest record you have of it.";
+  else if(coh<60&&con>=80)insight="You held your principle throughout — but your Part I responses reveal several simultaneously held beliefs that contradict each other. The scenario may have worked precisely because it only activated one thread of that belief system. A different dilemma might have pulled you apart.";
+  else insight="Your positions contain internal tensions, and the scenario revealed a further gap between stated principle and action under pressure. This is not unusual — most people hold more beliefs than they can consistently act on. The question is which ones you are willing to examine.";
+
+  const ctNote=bad.length===0?"No contradictions detected in Part I.":`${bad.length===1?"One tension":bad.length+" tensions"} identified: ${bad.map(c=>c.title).join(", ")}.`;
+
+  const decRows=t.nodes.map((n,i)=>{
+    const tagHtml=n.tag==="holds"?`<span class="tag tag-grn">Held</span>`:n.tag==="abandons"?`<span class="tag tag-red">Abandoned</span>`:`<span class="tag tag-gold">Revised</span>`;
+    const rz=n.reason?`<span class="tag ${n.reason==='updated'?'tag-grn':'tag-red'}">${n.reason==='updated'?'Principled':'Capitulation'}</span>`:"";
+    return`<div class="jrow ${n.tag==='holds'?'ok':n.tag==='abandons'?'bad':'warn'}">
+      <div class="dec-lbl" style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--t4);margin-bottom:6px">Escalation ${i+1} &mdash; ${esc(n.header)}</div>
+      ${tagHtml}${rz}
+      <div class="jrow-note" style="margin-top:6px">${esc(n.text)}</div>
+    </div>`;
+  }).join("");
+
+  return `
+<span class="eyebrow">Debrief &mdash; Your Results</span>
+<div class="head-icon">${icon(d.chainId)}<h2>The ${esc(d.title.replace(/^The\s+/,""))} Verdict</h2></div>
+<div class="final-grid">
+  <div class="sc-card">
+    <div class="scn" style="color:${bandColorVar(coh)}">${coh}</div>
+    <div class="sct">Coherence Score</div>
+    <div class="scg">${cohGrd}</div>
+  </div>
+  <div class="sc-card">
+    <div class="scn" style="color:${bandColorVar(con)}">${con}</div>
+    <div class="sct">Principle Trajectory</div>
+    <div class="scg">${conGrd}</div>
+  </div>
+</div>
+<div class="svg-wrap">${svgTrajectory(t)}<div class="svg-cap">Where you drifted from the principle you stated</div></div>
+<h3>Coherence &times; Consistency</h3>
+<p style="margin-bottom:14px">Two independent axes. You are: <em>${quadrantName(coh,con)}</em>.</p>
+<div class="svg-wrap">${svgQuadrant(coh,con)}<div class="svg-cap">Your position on the plane</div></div>
+<div class="insight">
+  <div class="ih">Assessment</div>
+  <p>${insight}</p>
+</div>
+<div class="insight">
+  <div class="ih">Stated principle</div>
+  <p class="stated">&ldquo;${esc(p.text)}&rdquo;</p>
+  <p style="font-size:13px">${ctNote}</p>
+</div>
+<div class="insight">
+  <div class="ih">Scenario decisions</div>
+  ${decRows}
+</div>
+<hr>
+<button class="btn primary" data-action="go" data-arg="debrief">Continue to Debrief &rarr;</button>`;
+}
+function mountFinal(){/* SVGs are static */}
+
+/* ---------- STUDENT: debrief ---------- */
+function rDebrief(){
+  const played=S.playedChains.slice();
+  const unplayed=DILEMMAS.filter(d=>!played.includes(d.chainId));
+  const replay=unplayed.map(d=>`
+<button class="replay-btn" data-action="replay" data-arg="${d.chainId}">
+  ${icon(d.chainId)}<span class="rb-t">${esc(d.title)} &mdash; ${esc(CHAINS[d.chainId].title)}</span><span class="rb-s">Run &rarr;</span>
+</button>`).join("");
+
+  return `
+<span class="eyebrow">Debrief &mdash; What Just Happened</span>
+<h2>The constructs behind the mirror</h2>
+<p>This exercise is built on three well-studied ideas about how beliefs and behaviour come apart under pressure.</p>
+<div class="construct">
+  <div class="cn-h">Cognitive dissonance (Festinger, 1957)</div>
+  <p>Holding two incompatible beliefs is uncomfortable, so we resolve the discomfort — often by quietly editing one belief rather than confronting the conflict. Part I surfaced pairs you may have been holding apart without noticing.</p>
+</div>
+<div class="construct">
+  <div class="cn-h">Moral licensing</div>
+  <p>Having affirmed a principle (e.g. "I value transparency"), we feel entitled to act against it later — the earlier stance "licenses" the lapse. Watch for this in any escalation where you held the principle early and abandoned it once the cost landed.</p>
+</div>
+<div class="construct">
+  <div class="cn-h">Stated vs. revealed preferences</div>
+  <p>What we say we value (stated) and what our choices show we value (revealed) frequently diverge. The gap between your Part I positions and your Part II actions is a direct measurement of that divergence.</p>
+</div>
+<h3>For written submission</h3>
+<div class="debrief-q"><div class="dq-n">Reflection 1</div><p>Identify one belief pair the assessment flagged as contradictory. Is it genuinely a contradiction, or a boundary you could state precisely? Write the boundary in one sentence.</p></div>
+<div class="debrief-q"><div class="dq-n">Reflection 2</div><p>Where your principle bent under pressure, you labelled it "updated" or "buckled". Defend that label to a sceptic. What evidence would prove you wrong?</p></div>
+<div class="debrief-q"><div class="dq-n">Reflection 3</div><p>Consistency was scored as a virtue here. Give one leadership situation where changing your mind was the more principled act — and explain how you would tell it apart from capitulation in the moment.</p></div>
+${unplayed.length?`<h3>Run a different scenario</h3><p style="margin-bottom:12px">Your Part I results are preserved. Test them against a different pressure.</p><div class="replay-list">${replay}</div>`:""}
+<hr>
+<button class="btn muted" data-action="restart">Retake from the beginning</button>`;
+}
+
+/* =====================================================================
+   TEACHER PROJECTION MODE
+   ===================================================================== */
+
+function rTIntro(){
+  return `
+<span class="eyebrow">Meridian Group — Classroom Projection</span>
+<div class="title-bar"></div>
+<h1>The Leadership Mirror</h1>
+<p class="lead">Teacher projection mode. One screen, projected to the room; the class votes by show of hands. Nothing is stored, nothing is networked.</p>
+<p>You will read fifteen statements aloud, tally the room's responses, and the engine will find the class's contradictions. Then a single stress-test dilemma plays out over three escalations, each with a discussion prompt built in.</p>
+<div class="brief-block">
+  <div class="bb-head">Navigation</div>
+  <p>Arrow keys &larr; / &rarr; move between screens. In tally mode, keys 1&ndash;5 add a hand; Shift+1&ndash;5 remove one. "Reset session" (bottom-right) clears everything.</p>
+</div>
+<div class="spacer"></div>
+<div class="btn-row">
+  <button class="btn primary" data-action="go" data-arg="tsetup">Set up the session &rarr;</button>
+  <button class="textlink" data-action="student-mode">Switch to student mode</button>
+</div>`;
+}
+
+function rTSetup(){
+  return `
+<span class="eyebrow">Teacher &mdash; Input Style</span>
+<h2>How will you capture the room?</h2>
+<p>Choose before you start. You can restart to change it.</p>
+<div class="spacer"></div>
+<button class="p-btn${S.inputStyle==='tally'?' on':''}" data-action="setInput" data-arg="tally">
+  <span class="pl">Quick tally</span>
+  <span class="pt">Count hands into five buckets per statement. Builds a live histogram and flags polarised statements. Best for classes up to ~40.</span>
+</button>
+<button class="p-btn${S.inputStyle==='majority'?' on':''}" data-action="setInput" data-arg="majority">
+  <span class="pl">Majority only</span>
+  <span class="pt">Pick the single modal response per statement. Fastest for large classes; no polarisation detection.</span>
+</button>
+<div class="spacer"></div>
+<button class="btn primary" data-action="startTAssess">Begin Part I &rarr;</button>`;
+}
+
+function tClassVector(){
+  // Modal response per statement -> vector[15]
+  const v=new Array(15).fill(0);
+  for(let id=0;id<15;id++){
+    if(S.inputStyle==="majority"){
+      v[id]=S.majority[id]!=null?S.majority[id]:0;
+    }else{
+      const t=S.tallies[id]||[0,0,0,0,0];
+      let mi=2,mx=-1;
+      t.forEach((c,i)=>{if(c>mx){mx=c;mi=i;}});
+      v[id]=mx>0?mi-2:0;
+    }
+  }
+  return v;
+}
+function isPolarised(counts){
+  const total=counts.reduce((a,b)=>a+b,0);
+  if(total<4)return false;
+  const low=counts[0]+counts[1], high=counts[3]+counts[4], mid=counts[2];
+  return low>=total*0.3 && high>=total*0.3 && mid<Math.max(low,high);
+}
+
+function rTAssessment(){
+  const idx=S.curIdx;
+  const stmt=STMTS[ORDER[idx]];
+  const labels=["SD","D","N","A","SA"];
+  const t=S.tallies[stmt.id]||[0,0,0,0,0];
+  const max=Math.max(1,...t);
+  let input;
+  if(S.inputStyle==="tally"){
+    const histo=`<div class="histo">${t.map((c,i)=>`
+      <div class="histo-col">
+        <div class="histo-cval">${c}</div>
+        <div class="histo-bar${c===0?' dim':''}" style="height:${(c/max)*100}%"></div>
+        <div class="histo-clbl">${labels[i]}</div>
+      </div>`).join("")}</div>`;
+    const counters=`<div class="tally-grid">${t.map((c,i)=>`
+      <div class="counter" data-action="tally" data-arg="${stmt.id}:${i}">
+        <div class="cn-lbl">${labels[i]}</div>
+        <div class="cn-val">${c}</div>
+        <div class="cn-key">key ${i+1}</div>
+      </div>`).join("")}</div>`;
+    input=histo+counters;
+  }else{
+    const sel=S.majority[stmt.id];
+    input=`<div class="t-majority-grid">${["Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree"].map((l,i)=>`
+      <button class="t-maj-btn${sel===i-2?' on':''}" data-action="major" data-arg="${stmt.id}:${i-2}">${l}</button>`).join("")}</div>`;
+  }
+  const back=idx>0?`<button class="btn muted" data-action="tback">&larr; Previous</button>`:"";
+  const last=idx===14;
+  return `
+<span class="eyebrow">Part I &mdash; Statement ${idx+1} of 15</span>
+<div class="bar"><div class="bar-fill" style="width:${(idx/15)*100}%"></div></div>
+<div class="spacer"></div>
+<div class="t-stmt-card">
+  ${icon(stmt.chain)}
+  <span class="t-stmt-num">${String(idx+1).padStart(2,"0")}</span>
+  <p class="t-stmt-text">${esc(stmt.text)}</p>
+</div>
+${input}
+<div class="btn-row">${back}<button class="btn primary" data-action="${last?'tanalyze':'tnext'}">${last?'Analyse the class &rarr;':'Next statement &rarr;'}</button></div>`;
+}
+
+function rTReveal(){
+  const R=S.results;
+  const subs=["Perfect class consistency.","Strong class coherence — one tension.","Moderate coherence — real tensions surfaced.","Substantial inconsistency across the room.","Deep contradictions in the class position."];
+  const si=R.score>=100?0:R.score>=80?1:R.score>=60?2:R.score>=40?3:4;
+  const histos=STMTS.map(st=>{
+    if(S.inputStyle!=="tally")return "";
+    const t=S.tallies[st.id]||[0,0,0,0,0];
+    const total=t.reduce((a,b)=>a+b,0);
+    if(total===0)return "";
+    const max=Math.max(1,...t);
+    const pol=isPolarised(t)?`<span class="polar-flag">Polarised</span>`:"";
+    const labels=["SD","D","N","A","SA"];
+    return `<div style="margin-bottom:18px"><div style="font-size:14px;color:var(--t2);margin-bottom:8px">${icon(st.chain)} ${esc(st.text.slice(0,90))}${st.text.length>90?"…":""}</div>${pol}
+      <div class="histo" style="height:90px">${t.map((c,i)=>`<div class="histo-col"><div class="histo-cval">${c}</div><div class="histo-bar${c===0?' dim':''}" style="height:${(c/max)*100}%"></div><div class="histo-clbl">${labels[i]}</div></div>`).join("")}</div></div>`;
+  }).join("");
+  const rows=R.chainResults.map(cr=>cr.contradiction?`
+<div class="jrow bad"><div class="jrow-head">${icon(cr.id)}<span class="jrow-title">${esc(cr.title)}</span></div><div class="jrow-note">${esc(cr.explain)}</div></div>`:`
+<div class="jrow ok"><div class="jrow-head">${icon(cr.id)}<span class="jrow-title">${esc(cr.title)}</span></div><div class="jrow-note">${esc(cr.consistentNote)}</div></div>`).join("");
+  return `
+<span class="eyebrow">Part I &mdash; Class Position</span>
+<div class="svg-wrap">${svgDial()}<div class="svg-cap">${subs[si]}</div></div>
+<div class="svg-wrap">${svgPentagon(tClassVector(),R.chainResults)}<div class="svg-cap">Class response strength by domain</div></div>
+${S.inputStyle==="tally"?`<h3>Per-statement distribution</h3>${histos}`:""}
+<h3>Class contradictions</h3>
+${rows}
+<hr>
+<button class="btn primary" data-action="go" data-arg="tbriefing">Continue to the stress test &rarr;</button>`;
+}
+
+function rTBriefing(){
+  const d=S.dilemma;
+  const cr=S.results.chainResults.find(r=>r.id===S.results.stressId);
+  const note=cr.contradiction?`The class's strongest contradiction was in <em>${esc(cr.title)}</em>. The scenario places the room inside it.`:`The class was internally consistent. The scenario engages the profit–ethics tension directly.`;
+  return `
+<span class="eyebrow">Part II &mdash; The Stress Test</span>
+<div class="head-icon">${icon(d.chainId)}<h2>${esc(d.title)}</h2></div>
+<p>${note}</p>
+<div class="brief-block"><div class="bb-head">How this runs</div><p>The class votes on a single governing principle, then on each of three escalations. Each escalation carries a discussion prompt and an optional two-minute timer. Vote by show of hands; you record the tally or the majority.</p></div>
+<div class="spacer"></div>
+<button class="btn primary" data-action="go" data-arg="tscenario">Enter the scenario &rarr;</button>`;
+}
+
+function rTScenario(){
+  const d=S.dilemma;
+  const pbtns=d.principles.map(p=>`
+<button class="p-btn${S.principleId===p.id?' on':''}" data-action="selP" data-arg="${p.id}">
+  <span class="pl">${esc(p.label)}</span><span class="pt">${esc(p.text)}</span>
+</button>`).join('');
+  return `
+<span class="eyebrow">Part II &mdash; ${esc(d.title)}</span>
+<div class="scene-card"><p class="sc-setup">${esc(d.setup)}</p><p class="sc-q">${esc(d.tension)}</p></div>
+<h3>The class votes on a governing principle</h3>
+<p style="margin-bottom:16px">Record the room's majority.</p>
+${pbtns}
+<div class="spacer"></div>
+<button class="btn primary" data-action="startTEsc"${!S.principleId?" disabled":""}>Proceed &rarr;</button>`;
+}
+
+function rTEscalation(){
+  const d=S.dilemma;
+  const step=S.escStep;
+  const escd=d.escs[step-1];
+  const princ=d.principles.find(p=>p.id===S.principleId);
+  const dots=[1,2,3].map(i=>{let c='step-dot';if(i<step)c+=' done';else if(i===step)c+=' cur';return`<div class="${c}"></div>`;}).join('');
+  const tally=S.escTally[step]||[0,0,0];
+  const maj=S.escMajority[step];
+  let optHtml;
+  if(S.inputStyle==="tally"){
+    optHtml=escd.opts.map((o,i)=>`<button class="t-opt${maj===i?' on':''}" data-action="etally" data-arg="${i}"><span class="to-count">${tally[i]}</span>${esc(o.text)}</button>`).join("");
+  }else{
+    optHtml=escd.opts.map((o,i)=>`<button class="t-opt${maj===i?' on':''}" data-action="emajor" data-arg="${i}">${esc(o.text)}</button>`).join("");
+  }
+  const timer=`
+<div class="timer">
+  <span class="tm-clock" id="tm-clock">${fmtTime(S.timerLeft)}</span>
+  <button class="btn muted" data-action="timer-toggle">${S.timerId?"Pause":"Start 2:00"}</button>
+  <button class="btn muted" data-action="timer-skip">Skip</button>
+</div>`;
+  const recorded=(S.inputStyle==="tally"?(S.escTally[step]||[]).some(c=>c>0):S.escMajority[step]!=null);
+  const isLast=step===3;
+  const nextBtn=recorded?`<button class="btn primary" data-action="${isLast?'tfinalize':'tnextEsc'}">${isLast?'Class results &rarr;':'Next escalation &rarr;'}</button>`:"";
+  return `
+<span class="eyebrow">Part II &mdash; ${esc(d.title)}</span>
+<div class="steps">${dots}<span class="step-label">Escalation ${step} of 3 &mdash; ${esc(escd.header)}</span></div>
+<div class="princ-bar"><span class="pb-label">Class principle</span><span class="pb-text">${esc(princ.text)}</span></div>
+<div class="esc-card"><p class="esc-sit">${esc(escd.sit)}</p></div>
+<div class="disc-prompt"><div class="dp-h">Discussion</div><p>${esc(escd.prompt)}</p></div>
+${timer}
+<div class="esc-q">Record the room's vote</div>
+<div class="t-opt-grid">${optHtml}</div>
+${nextBtn}`;
+}
+function mountTEsc(){/* clock updated by tick */}
+
+function rTFinal(){
+  const R=S.results, coh=R.score;
+  const t=S.trajectory, con=t.score;
+  const d=S.dilemma;
+  const p=d.principles.find(x=>x.id===S.principleId);
+  return `
+<span class="eyebrow">Class Results</span>
+<div class="head-icon">${icon(d.chainId)}<h2>Where the class landed</h2></div>
+<div class="final-grid">
+  <div class="sc-card"><div class="scn" style="color:${bandColorVar(coh)}">${coh}</div><div class="sct">Class Coherence</div></div>
+  <div class="sc-card"><div class="scn" style="color:${bandColorVar(con)}">${con}</div><div class="sct">Principle Trajectory</div></div>
+</div>
+<div class="svg-wrap">${svgTrajectory(t)}<div class="svg-cap">Class position across the three escalations</div></div>
+<div class="svg-wrap">${svgQuadrant(coh,con)}<div class="svg-cap">Class position: ${quadrantName(coh,con)}</div></div>
+<div class="insight"><div class="ih">Class principle</div><p class="stated">&ldquo;${esc(p.text)}&rdquo;</p></div>
+<hr>
+<button class="btn primary" data-action="go" data-arg="tdebrief">Closing slide &rarr;</button>`;
+}
+
+function rTDebrief(){
+  return `
+<span class="eyebrow">Debrief &mdash; Closing Slide</span>
+<h2>What the mirror showed</h2>
+<div class="construct"><div class="cn-h">Cognitive dissonance</div><p>Two incompatible beliefs held at once resolve by quietly editing one. Part I surfaced the class's.</p></div>
+<div class="construct"><div class="cn-h">Moral licensing</div><p>Affirming a principle early can license abandoning it once the cost lands.</p></div>
+<div class="construct"><div class="cn-h">Stated vs. revealed preferences</div><p>The gap between the class's Part I positions and its Part II votes is the measurement.</p></div>
+<h3>For discussion</h3>
+<div class="debrief-q"><div class="dq-n">One</div><p>Name a contradiction the class flagged. Is it a genuine conflict, or a boundary the room could state precisely?</p></div>
+<div class="debrief-q"><div class="dq-n">Two</div><p>Where the class's principle bent, was it updating on new information or buckling? How would you tell?</p></div>
+<div class="debrief-q"><div class="dq-n">Three</div><p>When is changing your mind the more principled act — and how do you distinguish it from capitulation in the moment?</p></div>
+<hr>
+<button class="btn muted" data-action="reset-session">Reset session</button>`;
+}
+
+/* =====================================================================
+   TIMER (teacher mode)
+   ===================================================================== */
+function fmtTime(s){const m=Math.floor(s/60);const ss=s%60;return m+":"+String(ss).padStart(2,"0");}
+function stopTimer(){if(S.timerId){clearInterval(S.timerId);S.timerId=null;}}
+function toggleTimer(){
+  if(S.timerId){stopTimer();render();return;}
+  if(S.timerLeft<=0)S.timerLeft=120;
+  S.timerId=setInterval(()=>{
+    S.timerLeft--;
+    const el=document.getElementById("tm-clock");
+    if(el)el.textContent=fmtTime(S.timerLeft);
+    if(S.timerLeft<=0){stopTimer();render();}
+  },1000);
+  render();
+}
+function skipTimer(){stopTimer();S.timerLeft=0;render();}
+
+/* =====================================================================
+   ACTIONS — delegated from a single click listener on #app.
+   ===================================================================== */
+
+function startAssessment(){S.screen="assessment";S.curIdx=0;render();}
+
+function answer(idAndVal){
+  if(S.advancing)return;
+  const[id,val]=idAndVal.split(":").map(Number);
+  S.responses[id]=val;
+  render();
+  S.advancing=true;
+  setTimeout(()=>{
+    S.advancing=false;
+    if(S.curIdx<14){S.curIdx++;render();}
+    else{S.screen="analyzing";render();setTimeout(()=>{finishPartI();},2300);}
+  },420);
+}
+function finishPartI(){
+  S.results=analyze(S.responses);
+  S.dilemma=DILEMMAS.find(d=>d.chainId===S.results.stressId);
+  go("reveal");
+}
+function backStmt(){if(S.curIdx>0){S.curIdx--;render();}}
+
+function selP(id){S.principleId=id;render();}
+function startEsc(){
+  if(!S.principleId)return;
+  S.escStep=1;S.escChoices=[];S.reasons=[null,null,null];
+  S.playedChains.push(S.dilemma.chainId);
+  go("escalation");
+}
+function selC(i){
+  i=Number(i);
+  const prev=S.escChoices[S.escStep-1];
+  S.escChoices[S.escStep-1]=i;
+  if(prev!==i)S.reasons[S.escStep-1]=null; // reset reason if choice changed
+  render();
+}
+function setReason(r){S.reasons[S.escStep-1]=r;render();}
+function nextEsc(){S.escStep++;render();}
+function finalize(){
+  S.trajectory=scoreTrajectory(S.dilemma,S.principleId,S.escChoices,S.reasons);
+  go("final");
+}
+function replay(chainId){
+  chainId=Number(chainId);
+  S.dilemma=DILEMMAS.find(d=>d.chainId===chainId);
+  S.principleId=null;S.escStep=1;S.escChoices=[];S.reasons=[null,null,null];S.trajectory=null;
+  go("scenario");
+}
+function restart(){
+  S.screen="intro";S.responses=new Array(15).fill(null);S.curIdx=0;
+  S.results=null;S.dilemma=null;S.principleId=null;S.escStep=1;
+  S.escChoices=[];S.reasons=[null,null,null];S.trajectory=null;S.playedChains=[];
+  render();
+}
+
+/* teacher actions */
+function teacherMode(){S.mode="teacher";S.screen="tintro";resetSession(true);}
+function studentMode(){S.mode="student";restart();}
+function setInput(v){S.inputStyle=v;render();}
+function startTAssess(){S.screen="tassessment";S.curIdx=0;render();}
+function tally(arg){
+  const[id,cat]=arg.split(":").map(Number);
+  if(!S.tallies[id])S.tallies[id]=[0,0,0,0,0];
+  S.tallies[id][cat]++;
+  render();
+}
+function tallyAdjust(cat,delta){
+  const id=STMTS[ORDER[S.curIdx]].id;
+  if(!S.tallies[id])S.tallies[id]=[0,0,0,0,0];
+  S.tallies[id][cat]=Math.max(0,S.tallies[id][cat]+delta);
+  render();
+}
+function major(arg){const[id,val]=arg.split(":").map(Number);S.majority[id]=val;render();}
+function tNext(){if(S.curIdx<14){S.curIdx++;render();}}
+function tBack(){if(S.curIdx>0){S.curIdx--;render();}}
+function tAnalyze(){
+  S.screen="tanalyzing";render();
+  setTimeout(()=>{
+    S.results=analyze(tClassVector());
+    S.dilemma=DILEMMAS.find(d=>d.chainId===S.results.stressId);
+    go("treveal");
+  },1800);
+}
+function startTEsc(){if(!S.principleId)return;S.escStep=1;S.escTally={};S.escMajority={};S.timerLeft=0;go("tescalation");}
+function eTally(i){i=Number(i);const s=S.escStep;if(!S.escTally[s])S.escTally[s]=[0,0,0];S.escTally[s][i]++;
+  // majority follows the leading tally
+  let mi=0,mx=-1;S.escTally[s].forEach((c,j)=>{if(c>mx){mx=c;mi=j;}});S.escMajority[s]=mi;render();}
+function eMajor(i){S.escMajority[S.escStep]=Number(i);render();}
+function tNextEsc(){S.escStep++;S.timerLeft=0;stopTimer();render();}
+function tFinalize(){
+  const choices=[1,2,3].map(s=>S.escMajority[s]);
+  S.trajectory=scoreTrajectory(S.dilemma,S.principleId,choices,[null,null,null]);
+  go("tfinal");
+}
+function resetSession(silent){
+  stopTimer();
+  S.responses=new Array(15).fill(null);S.curIdx=0;S.results=null;S.dilemma=null;
+  S.principleId=null;S.escStep=1;S.escChoices=[];S.reasons=[null,null,null];S.trajectory=null;
+  S.tallies={};S.majority={};S.escTally={};S.escMajority={};S.timerLeft=0;
+  if(S.mode==="teacher")S.screen="tintro";else S.screen="intro";
+  if(!silent)render();else render();
+}
+
+const ACTIONS={
+  start:startAssessment,answer:answer,back:backStmt,go:a=>go(a),
+  selP:selP,startEsc:startEsc,selC:selC,reason:setReason,nextEsc:nextEsc,
+  finalize:finalize,replay:replay,restart:restart,
+  "teacher-mode":teacherMode,"student-mode":studentMode,
+  setInput:setInput,startTAssess:startTAssess,tally:tally,major:major,
+  tnext:tNext,tback:tBack,tanalyze:tAnalyze,
+  startTEsc:startTEsc,etally:eTally,emajor:eMajor,tnextEsc:tNextEsc,tfinalize:tFinalize,
+  "timer-toggle":toggleTimer,"timer-skip":skipTimer,"reset-session":()=>resetSession(false),
+};
+
+document.getElementById("app").addEventListener("click",e=>{
+  const el=e.target.closest("[data-action]");
+  if(!el)return;
+  const act=el.getAttribute("data-action");
+  const arg=el.getAttribute("data-arg");
+  const fn=ACTIONS[act];
+  if(fn)fn(arg);
+});
+
+/* =====================================================================
+   KEYBOARD
+   ===================================================================== */
+document.addEventListener("keydown",e=>{
+  const k=e.key;
+  // Student Part I: 1-5 answers, Enter advances (back).
+  if(S.mode==="student"&&S.screen==="assessment"){
+    if(k>="1"&&k<="5"){e.preventDefault();answer(ORDER[S.curIdx]+":"+((+k)-3));return;}
+    if(k==="Enter"&&S.curIdx>0){/* already auto-advances on answer */}
+    if(k==="Backspace"){e.preventDefault();backStmt();return;}
+  }
+  // Student Part I generic Enter to advance primary button
+  if(k==="Enter"){
+    const primary=document.querySelector(".btn.primary:not([disabled])");
+    if(primary){e.preventDefault();primary.click();return;}
+  }
+  // Teacher: arrow nav + tally keys
+  if(S.mode==="teacher"){
+    if(S.screen==="tassessment"&&S.inputStyle==="tally"&&k>="1"&&k<="5"){
+      e.preventDefault();
+      tallyAdjust((+k)-1, e.shiftKey?-1:1);
+      return;
+    }
+    if(k==="ArrowRight"){e.preventDefault();teacherAdvance();return;}
+    if(k==="ArrowLeft"){e.preventDefault();teacherRetreat();return;}
+  }
+});
+
+function teacherAdvance(){
+  // advance the primary button if present
+  const p=document.querySelector(".btn.primary:not([disabled])");
+  if(p){p.click();return;}
+  if(S.screen==="tassessment"){if(S.curIdx<14)tNext();else tAnalyze();}
+}
+function teacherRetreat(){
+  if(S.screen==="tassessment"){tBack();return;}
+  const order=TEACHER_SCREENS;
+  const i=order.indexOf(S.screen);
+  if(i>0)go(order[i-1]);
+}
+
+/* =====================================================================
+   BOOT
+   ===================================================================== */
+if(S.mode==="teacher")S.screen="tintro";
+render();
+
+})();
+</script>
+</body>
+</html>
