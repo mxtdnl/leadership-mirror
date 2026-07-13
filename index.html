@@ -1009,18 +1009,38 @@ function rFinal(){
   const bad=R.chainResults.filter(r=>r.contradiction);
 
   const cohGrd=coh>=100?"Fully coherent":coh>=80?"Mostly coherent":coh>=60?"Partially coherent":coh>=40?"Significantly inconsistent":"Deeply inconsistent";
+  // Characterise the trajectory by the nature of the moves, not a raw band,
+  // so the label can never contradict the number shown beside it (e.g. a
+  // mostly-held 83 must not read as "capitulation").
   let conGrd;
-  if(t.buckled>0&&t.principled===0)conGrd="Moved under pressure — capitulation, not revision.";
-  else if(t.principled>0&&t.buckled===0&&t.rev+t.ab>0)conGrd="Moved, but on principle — you updated on new information.";
-  else if(con>=80)conGrd="Held your principle throughout.";
-  else if(con>=60)conGrd="Mostly consistent — one material deviation.";
-  else conGrd="Mixed — a blend of principled revision and pressure.";
+  const moves=t.rev+t.ab;
+  if(moves===0)conGrd="Held your principle at every turn.";
+  else if(t.buckled===0)conGrd=`Revised on new information, not under pressure${moves>1?" — more than once":""}.`;
+  else if(t.principled===0){
+    // All moves were under pressure. Only call it "capitulation, not revision"
+    // when abandonment dominated — three buckled *revisions* is bending, not
+    // abandoning, and shouldn't be labelled "not revision".
+    if(t.h>0)conGrd="Held at first, then gave way under pressure.";
+    else if(t.ab>t.rev)conGrd="Gave way under pressure — capitulation, not revision.";
+    else conGrd="Bent under pressure at every turn — pressure-driven, not principled.";
+  }
+  else conGrd="A mix — some updates on principle, some under pressure.";
 
+  // Coherence-major so the text never contradicts the coherence score: a
+  // high-coherence result is never told its positions "contain internal
+  // tensions". Every (coherence, consistency) region is covered.
   let insight;
-  if(coh>=80&&con>=80)insight="Your beliefs are internally consistent, and you held your stated principle when tested. That combination is uncommon — and worth interrogating. Held consistency can be integrity, or it can be dogmatism wearing integrity's clothes. The tell is whether you could have named, in advance, the evidence that would have changed your mind. If nothing could, you were not being principled; you were being immovable.";
-  else if(coh>=80&&con<60)insight="Your belief system is consistent, but under pressure you moved away from the principle you committed to. Whether that was principled revision or capitulation is the whole question — and your own answers to the 'why' prompts are the most honest record you have of it.";
-  else if(coh<60&&con>=80)insight="You held your principle throughout — but your Part I responses reveal several simultaneously held beliefs that contradict each other. The scenario may have worked precisely because it only activated one thread of that belief system. A different dilemma might have pulled you apart.";
-  else insight="Your positions contain internal tensions, and the scenario revealed a further gap between stated principle and action under pressure. This is not unusual — most people hold more beliefs than they can consistently act on. The question is which ones you are willing to examine.";
+  if(coh>=80){
+    if(con>=80)insight="Your beliefs are internally consistent, and you held your stated principle when tested. That combination is uncommon — and worth interrogating. Held consistency can be integrity, or it can be dogmatism wearing integrity's clothes. The tell is whether you could have named, in advance, the evidence that would have changed your mind. If nothing could, you were not being principled; you were being immovable.";
+    else if(con<60)insight="Your belief system is consistent, but under pressure you moved away from the principle you committed to. Whether that was principled revision or capitulation is the whole question — and your own answers to the 'why' prompts are the most honest record you have of it.";
+    else insight="Your beliefs are internally consistent, and you largely held your principle — bending once under pressure. Whether that single move was reasoned updating or quiet convenience is the one open question, and your own 'why' answer is the record.";
+  }else if(coh<60){
+    if(con>=80)insight="You held your principle throughout — but your Part I responses reveal several simultaneously held beliefs that contradict each other. The scenario may have worked precisely because it only activated one thread of that belief system. A different dilemma might have pulled you apart.";
+    else insight="Your positions contain internal tensions, and the scenario revealed a further gap between stated principle and action under pressure. This is not unusual — most people hold more beliefs than they can consistently act on. The question is which ones you are willing to examine.";
+  }else{
+    if(con>=80)insight="Your positions largely cohere and you held the principle under pressure. The tension that remains sits in a domain or two — worth naming before you call the set settled, because coherence never tested there is not yet proven.";
+    else insight="Your positions hold together in most domains but not all, and the scenario found the seam — a gap between what you stated and what you did. Most people carry more beliefs than they can act on at once; the question is which ones you are willing to examine.";
+  }
 
   const ctNote=bad.length===0?"No contradictions detected in Part I.":`${bad.length===1?"One tension":bad.length+" tensions"} identified: ${bad.map(c=>c.title).join(", ")}.`;
 
