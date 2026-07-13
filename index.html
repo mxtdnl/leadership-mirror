@@ -202,6 +202,9 @@ em{font-style:italic;color:var(--t1)}
 .counter .cn-lbl{font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:var(--t2);margin-bottom:10px}
 .counter .cn-val{font-family:var(--ff-s);font-size:44px;font-weight:700;color:var(--gold-l);line-height:1}
 .counter .cn-key{font-size:11px;color:var(--t4);margin-top:8px}
+.cn-minus{margin-top:10px;width:34px;height:34px;border:1px solid var(--b2);background:var(--s1);color:var(--t2);font-size:22px;line-height:1;cursor:pointer;border-radius:3px;transition:all 0.15s}
+.cn-minus:hover{border-color:var(--gold);color:var(--gold-l);background:var(--gold-d)}
+.cn-minus:disabled{opacity:0.3;cursor:not-allowed}
 .histo{display:flex;align-items:flex-end;gap:12px;height:140px;padding:0 10px;margin-bottom:16px;border-bottom:1px solid var(--b1)}
 .histo-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
 .histo-bar{width:100%;background:var(--gold);min-height:2px;transition:height 0.3s var(--ease)}
@@ -1150,9 +1153,13 @@ function tClassVector(){
       v[id]=S.majority[id]!=null?S.majority[id]:0;
     }else{
       const t=S.tallies[id]||[0,0,0,0,0];
-      let mi=2,mx=-1;
-      t.forEach((c,i)=>{if(c>mx){mx=c;mi=i;}});
-      v[id]=mx>0?mi-2:0;
+      const mx=Math.max(...t);
+      if(mx<=0){v[id]=0;continue;}
+      // Tie-break toward the centre: a 5-SD/5-SA split reads as neutral, not
+      // as the lowest bucket. Same-side ties collapse to that side.
+      const tied=[];t.forEach((c,i)=>{if(c===mx)tied.push(i);});
+      const mid=Math.round(tied.reduce((a,b)=>a+b,0)/tied.length);
+      v[id]=mid-2;
     }
   }
   return v;
@@ -1179,10 +1186,11 @@ function rTAssessment(){
         <div class="histo-clbl">${labels[i]}</div>
       </div>`).join("")}</div>`;
     const counters=`<div class="tally-grid">${t.map((c,i)=>`
-      <div class="counter" data-action="tally" data-arg="${stmt.id}:${i}">
+      <div class="counter" data-action="tally" data-arg="${stmt.id}:${i}" role="button" aria-label="Add a ${labels[i]} vote">
         <div class="cn-lbl">${labels[i]}</div>
         <div class="cn-val">${c}</div>
-        <div class="cn-key">key ${i+1}</div>
+        <div class="cn-key">click / key ${i+1}</div>
+        <button class="cn-minus" data-action="untally" data-arg="${stmt.id}:${i}" aria-label="Remove a ${labels[i]} vote"${c===0?" disabled":""}>&minus;</button>
       </div>`).join("")}</div>`;
     input=histo+counters;
   }else{
@@ -1420,6 +1428,12 @@ function tally(arg){
   S.tallies[id][cat]++;
   render();
 }
+function untally(arg){
+  const[id,cat]=arg.split(":").map(Number);
+  if(!S.tallies[id])return;
+  S.tallies[id][cat]=Math.max(0,S.tallies[id][cat]-1);
+  render();
+}
 function tallyAdjust(cat,delta){
   const id=STMTS[ORDER[S.curIdx]].id;
   if(!S.tallies[id])S.tallies[id]=[0,0,0,0,0];
@@ -1462,7 +1476,7 @@ const ACTIONS={
   selP:selP,startEsc:startEsc,selC:selC,reason:setReason,nextEsc:nextEsc,
   finalize:finalize,replay:replay,restart:restart,
   "teacher-mode":teacherMode,"student-mode":studentMode,
-  setInput:setInput,startTAssess:startTAssess,tally:tally,major:major,
+  setInput:setInput,startTAssess:startTAssess,tally:tally,untally:untally,major:major,
   tnext:tNext,tback:tBack,tanalyze:tAnalyze,
   startTEsc:startTEsc,etally:eTally,emajor:eMajor,tnextEsc:tNextEsc,tfinalize:tFinalize,
   "timer-toggle":toggleTimer,"timer-skip":skipTimer,"reset-session":()=>resetSession(false),
@@ -1495,10 +1509,11 @@ document.addEventListener("keydown",e=>{
   }
   // Teacher: arrow nav + tally keys
   if(S.mode==="teacher"){
-    if(S.screen==="tassessment"&&S.inputStyle==="tally"&&k>="1"&&k<="5"){
-      e.preventDefault();
-      tallyAdjust((+k)-1, e.shiftKey?-1:1);
-      return;
+    if(S.screen==="tassessment"&&S.inputStyle==="tally"){
+      // Match by physical key (e.code): Shift turns e.key into a symbol, so a
+      // decrement bound to e.key would never fire. Digit and Numpad both work.
+      const m=/^(?:Digit|Numpad)([1-5])$/.exec(e.code);
+      if(m){e.preventDefault();tallyAdjust((+m[1])-1, e.shiftKey?-1:1);return;}
     }
     if(k==="ArrowRight"){e.preventDefault();teacherAdvance();return;}
     if(k==="ArrowLeft"){e.preventDefault();teacherRetreat();return;}
